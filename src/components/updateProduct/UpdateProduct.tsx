@@ -1,18 +1,19 @@
 import { Formik, Field, ErrorMessage, Form } from 'formik';
 import * as Yup from 'yup';
-import { useCreateProductMutation } from '../../store/services/shopApi';
-import styles from './addproduct.module.scss';
-interface AddProductProps {
+import { useCreateProductMutation, useUpdateProductMutation } from '../../store/services/shopApi';
+import styles from './updateproduct.module.scss';
+import { IProduct } from '../../store/services/types';
+interface UpdateProductProps {
+	id_tovara: number;
 	onClose: (value: boolean) => void;
 }
-const AddProduct = ({ onClose }) => {
-	const [createProduct, {}] = useCreateProductMutation();
+const UpdateProduct = ({ onClose, id_tovara }: UpdateProductProps) => {
+	const [updateProduct, {}] = useUpdateProductMutation();
 
 	const handleSubmit = async (values, { setSubmitting }) => {
 		onClose(false);
 		try {
-			console.log(values);
-			const response = await createProduct(values);
+			const response = await updateProduct({ ...values, id_tovara });
 			console.log('Дані успішно відправлені на сервер:', response);
 		} catch (error) {
 			console.error('Помилка при відправці даних на сервер:', error);
@@ -31,11 +32,11 @@ const AddProduct = ({ onClose }) => {
 
 	// Валидация полей формы
 	const validationSchema = Yup.object().shape({
-		name: Yup.string().required('Обов`язкове поле'),
-		property1: Yup.number().required('Обов`язкове поле'),
-		property2: Yup.number().required('Обов`язкове поле'),
-		price: Yup.number().required('Обов`язкове поле'),
-		img: Yup.string().required('Обов`язкове поле'),
+		name: Yup.string().notRequired(),
+		property1: Yup.number().notRequired(),
+		property2: Yup.number().notRequired(),
+		price: Yup.number().notRequired(),
+		img: Yup.string().notRequired(),
 	});
 
 	return (
@@ -92,11 +93,11 @@ const AddProduct = ({ onClose }) => {
 							<ErrorMessage name="img" component="div" />
 						</div>
 
-						<button type="submit">Додати продукт</button>
+						<button type="submit">Змінити продукт</button>
 					</Form>
 				</Formik>
 			</div>
 		</div>
 	);
 };
-export default AddProduct;
+export default UpdateProduct;

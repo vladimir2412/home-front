@@ -1,22 +1,27 @@
 import React from 'react';
 import styles from './productCard.module.scss';
+import { Link } from 'react-router-dom';
 interface ProductCardProps {
 	id: number;
 	name: string;
 	price: number;
-	description: string;
-	discount: string;
+	availableCount: number;
+	discount: number;
+	img: string;
 }
-const ProductCard = ({ id, name, price, description, discount }: ProductCardProps) => {
+const ProductCard = ({ id, name, price, availableCount, discount, img }: ProductCardProps) => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.imageContainer}>
-				<img src="https://content.rozetka.com.ua/goods/images/preview/287705067.jpg"></img>
+				<img src={img}></img>
 			</div>
 			<h2>{name}</h2>
-			<p>{description}</p>
-			<p>{discount}</p>
-			<p>{price} грн</p>
+			<p>В наявності: {availableCount}</p>
+			<p>Знижка до {discount}%</p>
+			<p>Ціна: {price} грн</p>
+			<Link to={`/products/${id}`}>
+				<button>Детальніше</button>
+			</Link>
 		</div>
 	);
 };

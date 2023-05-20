@@ -1,12 +1,13 @@
 import React from 'react';
-import AddProduct from '../components/addProduct/AddProduct';
-import AdminTable from '../components/adminTable/AdminTable';
+import ProductsTable from '../components/adminTable/ProductsTable';
+import UsersTable from '../components/adminTable/usersTable/UsersTable';
 
 const AdminPage = () => {
 	return (
 		<div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-			<h1>Admin Page</h1>
-			<AdminTable />
+			<h1 style={{ marginTop: '40px' }}>Admin Page</h1>
+			<ProductsTable />
+			<UsersTable />
 		</div>
 	);
 };
