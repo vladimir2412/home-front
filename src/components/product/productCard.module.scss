@@ -1,0 +1,23 @@
+.container {
+	text-align: center;
+	width: 100%;
+	max-width: 282px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	row-gap: 8px;
+	h2 {
+		font-weight: 600;
+	}
+}
+.imageContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #f6f6f6;
+	img {
+		width: 140px;
+		height: 172px;
+		mix-blend-mode: multiply;
+	}
+}
