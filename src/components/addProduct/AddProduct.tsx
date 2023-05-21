@@ -11,7 +11,6 @@ const AddProduct = ({ onClose }) => {
 	const handleSubmit = async (values, { setSubmitting }) => {
 		onClose(false);
 		try {
-			console.log(values);
 			const response = await createProduct(values);
 			console.log('Дані успішно відправлені на сервер:', response);
 		} catch (error) {

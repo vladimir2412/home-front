@@ -1,12 +1,17 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IProducts, IProduct, IAuth } from './types';
+import { IProducts, IProduct, IAuth, ICart, ICartPost } from './types';
+import Cookies from 'js-cookie';
 export const shopApi = createApi({
 	reducerPath: 'shopApi',
 	baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/' }),
-	tagTypes: ['Product', 'User'],
+	tagTypes: ['Product', 'User', 'Cart', 'Order'],
 	endpoints: (builder) => ({
 		getProducts: builder.query<IProducts, string>({
 			query: () => `products/`,
+			providesTags: (result) => ['Product'],
+		}),
+		getProductById: builder.query<IProduct, number>({
+			query: (id) => `products/${id}`,
 			providesTags: (result) => ['Product'],
 		}),
 		createProduct: builder.mutation<IProducts, Partial<IProducts>>({
@@ -49,7 +54,43 @@ export const shopApi = createApi({
 		getUsers: builder.query<IAuth, Partial<IAuth>>({
 			query: () => ({
 				url: `/auth/users`,
-				provideTags: ['User'],
+				providesTags: (result) => ['User'],
+			}),
+		}),
+		getCartById: builder.query<ICart, number>({
+			query: (id) => ({
+				url: `/cart/${id}`,
+			}),
+			providesTags: (result) => ['Cart'],
+		}),
+		addProductToCart: builder.mutation<ICartPost, ICartPost>({
+			query: (body: ICartPost) => ({
+				url: `/cart`,
+				method: 'POST',
+				body: body,
+			}),
+			invalidatesTags: ['Cart'],
+		}),
+		getOrders: builder.query<ICart, void>({
+			query: () => ({
+				url: `/orders`,
+			}),
+			providesTags: ['Order'],
+		}),
+		submitOrder: builder.mutation<void, void>({
+			query: (id) => ({
+				url: `/orders`,
+				method: 'POST',
+				body: id,
+			}),
+			invalidatesTags: ['Cart'],
+		}),
+		getRole: builder.query<string, void>({
+			query: () => ({
+				url: `/auth/user-role`,
+				headers: {
+					Authorization: `Bearer ${Cookies.get('accessToken')}`,
+				},
 			}),
 		}),
 	}),
@@ -62,4 +103,10 @@ export const {
 	useRegisterMutation,
 	useLoginMutation,
 	useGetUsersQuery,
+	useGetCartByIdQuery,
+	useGetProductByIdQuery,
+	useAddProductToCartMutation,
+	useGetOrdersQuery,
+	useSubmitOrderMutation,
+	useGetRoleQuery,
 } = shopApi;

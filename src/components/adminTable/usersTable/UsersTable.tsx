@@ -2,8 +2,6 @@ import { useGetUsersQuery } from '../../../store/services/shopApi';
 import styles from './userstable.module.scss';
 const UsersTable = () => {
 	const { data } = useGetUsersQuery();
-	console.log(data);
-
 	return (
 		<div>
 			<h2 style={{ textAlign: 'center', marginTop: '20px', fontSize: '24px', fontWeight: '500' }}>

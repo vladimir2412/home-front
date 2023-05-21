@@ -1,6 +1,6 @@
-import React from 'react';
 import styles from './productCard.module.scss';
 import { Link } from 'react-router-dom';
+import useAddToCart from '../../hooks/useAddToCart';
 interface ProductCardProps {
 	id: number;
 	name: string;
@@ -10,6 +10,10 @@ interface ProductCardProps {
 	img: string;
 }
 const ProductCard = ({ id, name, price, availableCount, discount, img }: ProductCardProps) => {
+	const { addToCart } = useAddToCart();
+	const handleAddToCart = (id: number) => {
+		addToCart(id);
+	};
 	return (
 		<div className={styles.container}>
 			<div className={styles.imageContainer}>
@@ -22,6 +26,7 @@ const ProductCard = ({ id, name, price, availableCount, discount, img }: Product
 			<Link to={`/products/${id}`}>
 				<button>Детальніше</button>
 			</Link>
+			<button onClick={() => handleAddToCart(id)}>Добавити до корзини</button>
 		</div>
 	);
 };

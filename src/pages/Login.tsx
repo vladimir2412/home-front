@@ -21,6 +21,7 @@ const Login = () => {
 			const { accessToken, refreshToken } = response.data;
 			Cookies.set('accessToken', accessToken);
 			Cookies.set('refreshToken', refreshToken);
+			localStorage.setItem('isAuth', 'true');
 		} catch (error) {
 			console.log(error);
 		} finally {

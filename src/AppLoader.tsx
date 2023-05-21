@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import ProductPage from './pages/ProductPage';
 import AdminPage from './pages/AdminPage';
@@ -6,15 +6,9 @@ import ProductInfoPage from './pages/ProductInfoPage';
 import CartPage from './pages/CartPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
-const PermissionWrapper = ({ children }) => {
-	const isAuth = localStorage.getItem('isAuth');
-	console.log(isAuth);
-	if (!isAuth) {
-		return <Navigate to="/login" />;
-	}
+import PermissionWrapper from './wrappers/PermissionWrapper';
+import AuthWrapper from './wrappers/AuthWrapper';
 
-	return children;
-};
 const AppLoader = () => {
 	return (
 		<Routes>
@@ -22,7 +16,7 @@ const AppLoader = () => {
 			<Route
 				path={'/products'}
 				element={
-					<PermissionWrapper>
+					<PermissionWrapper allowedRole={['user', 'admin']}>
 						<ProductPage />
 					</PermissionWrapper>
 				}
@@ -30,7 +24,7 @@ const AppLoader = () => {
 			<Route
 				path={'/products/:id'}
 				element={
-					<PermissionWrapper>
+					<PermissionWrapper allowedRole={['user', 'admin']}>
 						<ProductInfoPage />
 					</PermissionWrapper>
 				}
@@ -38,7 +32,7 @@ const AppLoader = () => {
 			<Route
 				path={'/cart'}
 				element={
-					<PermissionWrapper>
+					<PermissionWrapper allowedRole={['user', 'admin']}>
 						<CartPage />
 					</PermissionWrapper>
 				}
@@ -46,13 +40,27 @@ const AppLoader = () => {
 			<Route
 				path={'/admin'}
 				element={
-					<PermissionWrapper>
+					<PermissionWrapper allowedRole={['admin']}>
 						<AdminPage />
 					</PermissionWrapper>
 				}
 			/>
-			<Route path={'/login'} element={<Login />} />
-			<Route path={'/register'} element={<Register />} />
+			<Route
+				path={'/login'}
+				element={
+					<AuthWrapper>
+						<Login />
+					</AuthWrapper>
+				}
+			/>
+			<Route
+				path={'/register'}
+				element={
+					<AuthWrapper>
+						<Register />
+					</AuthWrapper>
+				}
+			/>
 			<Route path={'*'} element={<h1>Page not Found</h1>} />
 		</Routes>
 	);

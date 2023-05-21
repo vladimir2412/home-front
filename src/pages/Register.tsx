@@ -1,5 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useContext } from 'react';
+import { useEffect } from 'react';
 import * as Yup from 'yup';
 import { useRegisterMutation } from '../store/services/shopApi';
 import { AuthContext } from '../AuthContext';
@@ -24,6 +24,9 @@ const Register = () => {
 				role: 'user',
 			});
 			localStorage.setItem('isAuth', 'true');
+			Cookies.set('accessToken', response.data.accessToken);
+			Cookies.set('refreshToken', response.data.refreshToken);
+			localStorage.setItem('id', response.data.id);
 		} catch (error) {
 			console.log(error);
 		} finally {

@@ -13,3 +13,18 @@ export interface IAuth {
 	login: string;
 	password: string;
 }
+export interface ICartItem {
+	id_tovara: number;
+	quantity: number;
+}
+export interface ICartPost {
+	user_id: number;
+	item: {
+		id_tovara: number;
+		quantity: number;
+	};
+}
+export interface ICart {
+	user_id: number;
+	items: ICartItem[];
+}
