@@ -3,7 +3,7 @@ import { IProducts, IProduct, IAuth, ICart, ICartPost } from './types';
 import Cookies from 'js-cookie';
 export const shopApi = createApi({
 	reducerPath: 'shopApi',
-	baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/' }),
+	baseQuery: fetchBaseQuery({ baseUrl: 'https://ecommerce-backend-vladimir2412.vercel.app/' }),
 	tagTypes: ['Product', 'User', 'Cart', 'Order'],
 	endpoints: (builder) => ({
 		getProducts: builder.query<IProducts, string>({
