@@ -18,10 +18,11 @@ const Login = () => {
 	const handleSubmit = async (values, { setSubmitting }) => {
 		try {
 			const response = await login({ login: values.login, password: values.password });
-			const { accessToken, refreshToken } = response.data;
+			const { accessToken, refreshToken, id } = response.data;
 			Cookies.set('accessToken', accessToken);
 			Cookies.set('refreshToken', refreshToken);
 			localStorage.setItem('isAuth', 'true');
+			localStorage.setItem('id', id);
 		} catch (error) {
 			console.log(error);
 		} finally {

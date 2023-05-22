@@ -10,6 +10,7 @@ interface ProductCardProps {
 	img: string;
 }
 const ProductCard = ({ id, name, price, availableCount, discount, img }: ProductCardProps) => {
+	console.log(id);
 	const { addToCart } = useAddToCart();
 	const handleAddToCart = (id: number) => {
 		addToCart(id);
