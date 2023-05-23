@@ -1,23 +1,66 @@
 .container {
-	text-align: center;
-	width: 100%;
-	max-width: 282px;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	row-gap: 8px;
-	h2 {
-		font-weight: 600;
+	row-gap: 10px;
+	.imageContainer {
+		width: 420px;
+		height: 550px;
+		overflow: hidden;
+	}
+	img {
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+		background-position: center;
+		transition: transform 0.3s ease;
+	}
+	img:hover {
+		transform: scale(1.1);
+	}
+	.info {
+		width: 100%;
+		text-align: center;
+		.info__name {
+			font-size: 24px;
+			font-weight: 700;
+			letter-spacing: 1px;
+			padding-bottom: 25px;
+			transition: 400ms linear;
+		}
+		.info__name:hover {
+			color: #ef4744;
+			opacity: 0.8;
+			cursor: pointer;
+		}
+		.info__price {
+			font-size: 23px;
+			font-weight: 600;
+
+			span {
+				color: #ef3633;
+				font-weight: 600;
+				font-size: 23px;
+			}
+		}
+		.info__buttons {
+			margin: 20px 20px 0 20px;
+		}
+		button {
+			padding: 10px;
+			color: #fff;
+			background-color: #ef4744;
+			border: none;
+			font-size: 16px;
+			transition: 200ms linear;
+		}
+		button:hover {
+			background-color: #ef4744;
+			opacity: 0.8;
+			cursor: pointer;
+		}
 	}
 }
-.imageContainer {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #f6f6f6;
-	img {
-		width: 140px;
-		height: 172px;
-		mix-blend-mode: multiply;
-	}
+a {
+	text-decoration: none;
+	color: inherit;
 }

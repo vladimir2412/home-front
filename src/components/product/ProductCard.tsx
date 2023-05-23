@@ -9,26 +9,32 @@ interface ProductCardProps {
 	discount: number;
 	img: string;
 }
-const ProductCard = ({ id, name, price, availableCount, discount, img }: ProductCardProps) => {
-	console.log(id);
+const ProductCard = ({ id, name, price, img }: ProductCardProps) => {
 	const { addToCart } = useAddToCart();
 	const handleAddToCart = (id: number) => {
 		addToCart(id);
 	};
 	return (
-		<div className={styles.container}>
-			<div className={styles.imageContainer}>
-				<img src={img}></img>
+		<>
+			<div className={styles.container}>
+				<Link to={`/products/${id}`}>
+					<div className={styles.imageContainer}>
+						<img src={img} alt={name} />
+					</div>
+				</Link>
+				<div className={styles.info}>
+					<Link to={`/products/${id}`}>
+						<p className={styles.info__name}>{name}</p>
+					</Link>
+					<p className={styles.info__price}>
+						Ціна: <span>{price} грн</span>
+					</p>
+					<div className={styles.info__buttons}>
+						<button onClick={() => handleAddToCart(id)}>Додати до кошика</button>
+					</div>
+				</div>
 			</div>
-			<h2>{name}</h2>
-			<p>В наявності: {availableCount}</p>
-			<p>Знижка до {discount}%</p>
-			<p>Ціна: {price} грн</p>
-			<Link to={`/products/${id}`}>
-				<button>Детальніше</button>
-			</Link>
-			<button onClick={() => handleAddToCart(id)}>Добавити до корзини</button>
-		</div>
+		</>
 	);
 };
 

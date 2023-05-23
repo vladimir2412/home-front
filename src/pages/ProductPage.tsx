@@ -1,37 +1,39 @@
 import { useState } from 'react';
 import { useGetProductsQuery } from '../store/services/shopApi';
 import ProductCard from '../components/product/ProductCard';
+import styles from '../styles/modules/ProductPage.module.scss';
+import Loader from '../components/loader/Loader';
 const ProductPage = () => {
 	const [count, setCount] = useState(0);
-	const { data } = useGetProductsQuery();
+	const { data, isLoading } = useGetProductsQuery();
 	return (
 		<>
-			<h1 style={{ textAlign: 'center', marginTop: '40px', fontWeight: '500', fontSize: '32px' }}>
-				List of available products:
-			</h1>
-			<div
-				style={{
-					marginTop: '40px',
-					display: 'flex',
-					flexDirection: 'column',
-					rowGap: '20px',
-					alignItems: 'center',
-				}}
-			>
-				{data?.products.map((product) => {
-					return (
-						<ProductCard
-							key={product.id_tovara}
-							id={product.id_tovara}
-							img={product.img}
-							name={product.name}
-							price={product.price}
-							availableCount={product.property1}
-							discount={product.property2}
-						/>
-					);
-				})}
-			</div>
+			{isLoading ? (
+				<div className={styles.loader}>
+					<Loader />
+				</div>
+			) : (
+				<>
+					<div className={styles.container}>
+						<h1 className={styles.title}>List of available products:</h1>
+						<div className={styles.list}>
+							{data?.products.map((product) => {
+								return (
+									<ProductCard
+										key={product.id_tovara}
+										id={product.id_tovara}
+										img={product.img}
+										name={product.name}
+										price={product.price}
+										availableCount={product.property1}
+										discount={product.property2}
+									/>
+								);
+							})}
+						</div>
+					</div>
+				</>
+			)}
 		</>
 	);
 };

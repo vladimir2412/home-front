@@ -1,0 +1,50 @@
+.container {
+	display: flex;
+	margin-top: 50px;
+
+	.img {
+		width: 650px;
+		height: 650px;
+		margin: 0 100px 0 100px;
+	}
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		background-position: center;
+		border-radius: 10px;
+	}
+	.info__name {
+		font-weight: 700;
+		font-size: 20px;
+		letter-spacing: 3px;
+		padding-bottom: 5px;
+	}
+	.info__price {
+		color: #ef4744;
+		font-size: 18px;
+		font-weight: 600;
+	}
+	button {
+		margin-top: 20px;
+		width: 100%;
+		color: #fff;
+		background-color: #ef4744;
+		border: none;
+		padding: 15px;
+		font-weight: 600;
+		font-size: 16px;
+		transition: 200ms linear;
+	}
+	button:hover {
+		background-color: #ef4744;
+		opacity: 0.8;
+		cursor: pointer;
+	}
+}
+.loader {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
