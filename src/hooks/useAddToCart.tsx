@@ -4,6 +4,7 @@ const useAddToCart = () => {
 	const [addToCartMutation] = useAddProductToCartMutation();
 
 	const addToCart = async (id: number) => {
+		id = Number(id);
 		const user_id = Number(localStorage.getItem('id'));
 		const item = {
 			id_tovara: id,
