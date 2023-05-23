@@ -23,10 +23,14 @@ const Register = () => {
 				password: values.password,
 				role: 'user',
 			});
-			localStorage.setItem('isAuth', 'true');
-			Cookies.set('accessToken', response.data.accessToken);
-			Cookies.set('refreshToken', response.data.refreshToken);
-			localStorage.setItem('id', response.data.id);
+			if (response.data.success) {
+				localStorage.setItem('isAuth', 'true');
+				Cookies.set('accessToken', response.data.accessToken);
+				Cookies.set('refreshToken', response.data.refreshToken);
+				localStorage.setItem('id', response.data.id);
+				alert('Успішна реєстрація');
+				window.location.href = '/';
+			}
 		} catch (error) {
 			console.log(error);
 		} finally {

@@ -14,15 +14,20 @@ const Login = () => {
 		login: Yup.string().required('Login is required'),
 		password: Yup.string().required('Password is required'),
 	});
-
 	const handleSubmit = async (values, { setSubmitting }) => {
 		try {
 			const response = await login({ login: values.login, password: values.password });
-			const { accessToken, refreshToken, id } = response.data;
-			Cookies.set('accessToken', accessToken);
-			Cookies.set('refreshToken', refreshToken);
-			localStorage.setItem('isAuth', 'true');
-			localStorage.setItem('id', id);
+			if (response.data.success) {
+				const { accessToken, refreshToken, id } = response.data;
+				Cookies.set('accessToken', accessToken);
+				Cookies.set('refreshToken', refreshToken);
+				localStorage.setItem('isAuth', 'true');
+				localStorage.setItem('id', id);
+				alert('Успішна авторизація');
+				window.location.href = '/';
+			} else {
+				alert('Невірний логін або пароль');
+			}
 		} catch (error) {
 			console.log(error);
 		} finally {
