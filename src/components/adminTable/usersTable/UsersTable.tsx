@@ -1,7 +1,16 @@
-import { useGetUsersQuery } from '../../../store/services/shopApi';
+import {
+	useGetUsersQuery,
+	useRemoveUserMutation,
+	useUpdateUserMutation,
+} from '../../../store/services/shopApi';
 import styles from './userstable.module.scss';
 const UsersTable = () => {
 	const { data } = useGetUsersQuery();
+	const [updateUser] = useUpdateUserMutation();
+	const [removeUser] = useRemoveUserMutation();
+	const handleDelete = (id: number) => {
+		removeUser(id);
+	};
 	return (
 		<div>
 			<h2 style={{ textAlign: 'center', marginTop: '20px', fontSize: '24px', fontWeight: '500' }}>
@@ -25,7 +34,7 @@ const UsersTable = () => {
 								<td>{user.role}</td>
 								<td>
 									<button>Update</button>
-									<button>Delete</button>
+									<button onClick={() => handleDelete(user.id)}>Delete</button>
 								</td>
 							</tr>
 						);

@@ -93,6 +93,21 @@ export const shopApi = createApi({
 				},
 			}),
 		}),
+		updateUser: builder.mutation<void, IAuth>({
+			query: (user) => ({
+				url: `auth/users/${user.id}`,
+				method: 'PUT',
+				body: user,
+			}),
+			invalidatesTags: ['User'],
+		}),
+		removeUser: builder.mutation<void, number>({
+			query: (id) => ({
+				url: `auth/users/${id}`,
+				method: 'DELETE',
+			}),
+			invalidatesTags: ['User'],
+		}),
 	}),
 });
 export const {
@@ -109,4 +124,6 @@ export const {
 	useGetOrdersQuery,
 	useSubmitOrderMutation,
 	useGetRoleQuery,
+	useUpdateUserMutation,
+	useRemoveUserMutation,
 } = shopApi;

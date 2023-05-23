@@ -10,6 +10,8 @@ export interface IProducts {
 	products: IProduct[];
 }
 export interface IAuth {
+	id?: number;
+	role?: string;
 	login: string;
 	password: string;
 }
