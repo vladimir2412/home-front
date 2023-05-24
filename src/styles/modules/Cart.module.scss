@@ -106,10 +106,34 @@
 		font-size: 19px;
 		font-weight: 600;
 	}
+	.container__button {
+		display: flex;
+		justify-content: center;
+	}
+	button {
+		margin: 20px 0 30px 0;
+		width: 50%;
+		color: #fff;
+		background-color: #ef4744;
+		border: none;
+		padding: 15px;
+		font-weight: 600;
+		font-size: 16px;
+		transition: 200ms linear;
+	}
+	button:hover {
+		background-color: #ef4744;
+		opacity: 0.8;
+		cursor: pointer;
+	}
 
 	/* Респонсивные стили для ноутбуков и планшетов */
 	@media screen and (max-width: 1024px) {
 		.container__order {
+			font-size: 18px;
+			margin-left: 20px;
+		}
+		.container__sum {
 			font-size: 18px;
 			margin-left: 20px;
 		}
@@ -138,16 +162,15 @@
 					}
 				}
 			}
-
-			.container__sum {
-				font-size: 18px;
-			}
 		}
 	}
 
 	/* Респонсивные стили для телефонов */
 	@media screen and (max-width: 480px) {
 		.container__order {
+			font-size: 16px;
+		}
+		.container__sum {
 			font-size: 16px;
 		}
 
@@ -191,10 +214,6 @@
 						font-size: 20px;
 					}
 				}
-			}
-
-			.container__sum {
-				font-size: 16px;
 			}
 		}
 	}

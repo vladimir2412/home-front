@@ -38,9 +38,9 @@ const Cart = () => {
 						})}
 						<p className={styles.container__sum}>Разом:</p>
 						{sumQuantity !== 0 ? (
-							<button onClick={() => handleSubmit()} style={{ marginTop: '20px' }}>
-								Замовити
-							</button>
+							<div className={styles.container__button}>
+								<button onClick={() => handleSubmit()}>Замовити</button>
+							</div>
 						) : (
 							''
 						)}
