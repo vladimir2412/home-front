@@ -1,7 +1,12 @@
+import { useGetCartByIdQuery } from '../../store/services/shopApi';
 import styles from './header.module.scss';
 import { Link } from 'react-router-dom';
 const Header = () => {
+	const id = Number(localStorage.getItem('id'));
+	const { data } = useGetCartByIdQuery(id);
 	const isAuth = localStorage.getItem('isAuth');
+	const cartCounter = data?.items.map((item) => item.quantity);
+	const sum = cartCounter?.reduce((acc, curr) => acc + curr, 0);
 	return (
 		<nav className={styles.wrapper}>
 			<div className={styles.navigation}>
@@ -27,7 +32,7 @@ const Header = () => {
 						/>
 					</svg>
 				</Link>
-				<Link to={'/cart'}>
+				<Link to={'/cart'} className={styles.links__cart}>
 					<svg
 						width="35"
 						height="35"
@@ -41,6 +46,7 @@ const Header = () => {
 						/>
 						<path d="M9 13H11V18H9V13ZM13 13H15V18H13V13Z" fill="black" />
 					</svg>
+					<p className={styles.cart__counter}>{sum}</p>
 				</Link>
 			</div>
 		</nav>
