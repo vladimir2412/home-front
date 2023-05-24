@@ -3,6 +3,7 @@ import { useGetProductByIdQuery } from '../store/services/shopApi';
 import styles from '../styles/modules/ProductInfoPage.module.scss';
 import Loader from '../components/loader/Loader';
 import useAddToCart from '../hooks/useAddToCart';
+import Header from '../components/header/Header';
 const ProductInfoPage = () => {
 	const { id } = useParams();
 	const { data, isLoading } = useGetProductByIdQuery(Number(id));
@@ -12,6 +13,7 @@ const ProductInfoPage = () => {
 	};
 	return (
 		<>
+			<Header />
 			{isLoading ? (
 				<div className={styles.loader}>
 					<Loader />

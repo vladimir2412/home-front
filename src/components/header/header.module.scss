@@ -1,22 +1,37 @@
 .wrapper {
-	width: 100%;
-	margin: 0 auto;
-	margin-top: 40px;
+	background: blanchedalmond;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-	.links {
+	.navigation {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		column-gap: 20px;
-		a {
-			text-decoration: none;
-			color: #000;
-			padding: 10px 20px;
-			border-radius: 5px;
-			background-color: #f0f0f0;
+		flex-grow: 1;
+		font-size: 18px;
+		font-weight: 600;
+
+		> * + * {
+			margin-left: 20px;
+		}
+		> * {
+			transition: 200ms linear;
+		}
+		> * {
 			&:hover {
-				background-color: #ccc;
+				color: #ef4744; // Здесь можно указать желаемый цвет при наведении
 			}
+		}
+	}
+
+	.links {
+		display: flex;
+		align-items: center;
+		margin-right: 20px;
+
+		> * + * {
+			margin-left: 20px;
 		}
 	}
 }
