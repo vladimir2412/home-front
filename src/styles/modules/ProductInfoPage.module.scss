@@ -44,9 +44,10 @@
 			cursor: pointer;
 		}
 	}
-
-	@media screen and (max-width: 1024px) {
-		/* Стили для ноутбуков и планшетов */
+}
+@media screen and (max-width: 1024px) {
+	/* Стили для ноутбуков и планшетов */
+	.container {
 		.img {
 			width: 450px;
 			height: 450px;
@@ -69,9 +70,11 @@
 			}
 		}
 	}
+}
 
-	@media screen and (max-width: 768px) {
-		/* Стили для планшетов */
+@media screen and (max-width: 768px) {
+	/* Стили для планшетов */
+	.container {
 		.img {
 			width: 350px;
 			height: 420px;
@@ -96,30 +99,37 @@
 			}
 		}
 	}
+}
 
-	@media screen and (max-width: 480px) {
-		/* Стили для телефонов */
+@media screen and (max-width: 480px) {
+	/* Стили для телефонов */
+	.container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 		.img {
-			width: 200px;
-			height: 300px;
-			margin: 0 15px 0 15px;
+			width: 80%;
+			margin: 0 15px 20px 15px;
 		}
 		.info {
-			width: 35%;
+			width: 80%;
+			margin: 0 auto;
 			.info__name {
-				font-size: 10px;
-				letter-spacing: 1px;
+				font-size: 16px;
+				letter-spacing: 2px;
 				padding-bottom: 1px;
 			}
 
 			.info__price {
-				font-size: 12px;
+				font-size: 16px;
 			}
 
 			button {
-				margin-top: 10px;
-				font-size: 9px;
-				padding: 5px;
+				margin: 10px 0 20px 0;
+				font-size: 12px;
+				padding: 10px;
+				width: 50%;
 			}
 		}
 	}
