@@ -14,32 +14,112 @@
 		background-position: center;
 		border-radius: 10px;
 	}
-	.info__name {
-		font-weight: 700;
-		font-size: 20px;
-		letter-spacing: 3px;
-		padding-bottom: 5px;
+	.info {
+		width: 25%;
+		.info__name {
+			font-weight: 700;
+			font-size: 20px;
+			letter-spacing: 3px;
+			padding-bottom: 5px;
+		}
+		.info__price {
+			color: #ef4744;
+			font-size: 18px;
+			font-weight: 600;
+		}
+		button {
+			margin-top: 20px;
+			width: 100%;
+			color: #fff;
+			background-color: #ef4744;
+			border: none;
+			padding: 15px;
+			font-weight: 600;
+			font-size: 16px;
+			transition: 200ms linear;
+		}
+		button:hover {
+			background-color: #ef4744;
+			opacity: 0.8;
+			cursor: pointer;
+		}
 	}
-	.info__price {
-		color: #ef4744;
-		font-size: 18px;
-		font-weight: 600;
+
+	@media screen and (max-width: 1024px) {
+		/* Стили для ноутбуков и планшетов */
+		.img {
+			width: 450px;
+			height: 450px;
+			margin: 0 100px 0 100px;
+		}
+		.info {
+			.info__name {
+				font-size: 18px;
+				letter-spacing: 2px;
+				padding-bottom: 3px;
+			}
+
+			.info__price {
+				font-size: 16px;
+			}
+
+			button {
+				font-size: 14px;
+				padding: 15px;
+			}
+		}
 	}
-	button {
-		margin-top: 20px;
-		width: 100%;
-		color: #fff;
-		background-color: #ef4744;
-		border: none;
-		padding: 15px;
-		font-weight: 600;
-		font-size: 16px;
-		transition: 200ms linear;
+
+	@media screen and (max-width: 768px) {
+		/* Стили для планшетов */
+		.img {
+			width: 350px;
+			height: 350px;
+			margin: 0 50px 0 50px;
+		}
+		.info {
+			.info__name {
+				font-size: 16px;
+				letter-spacing: 1px;
+				padding-bottom: 2px;
+			}
+
+			.info__price {
+				font-size: 14px;
+			}
+
+			button {
+				margin-top: 15px;
+				font-size: 12px;
+				padding: 12px;
+			}
+		}
 	}
-	button:hover {
-		background-color: #ef4744;
-		opacity: 0.8;
-		cursor: pointer;
+
+	@media screen and (max-width: 480px) {
+		/* Стили для телефонов */
+		.img {
+			width: 200px;
+			height: 200px;
+			margin: 0 25px 0 25px;
+		}
+		.info {
+			.info__name {
+				font-size: 10px;
+				letter-spacing: 1px;
+				padding-bottom: 1px;
+			}
+
+			.info__price {
+				font-size: 12px;
+			}
+
+			button {
+				margin-top: 10px;
+				font-size: 9px;
+				padding: 5px;
+			}
+		}
 	}
 }
 .loader {

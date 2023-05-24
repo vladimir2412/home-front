@@ -2,6 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	row-gap: 10px;
+	margin: 0 auto;
 	.imageContainer {
 		width: 420px;
 		height: 550px;
@@ -57,6 +58,84 @@
 			background-color: #ef4744;
 			opacity: 0.8;
 			cursor: pointer;
+		}
+	}
+	// Медиа-запросы для разных устройств
+	@media screen and (max-width: 1024px) {
+		// Стили для ноутбуков и планшетов
+		.imageContainer {
+			width: 300px;
+			height: 400px;
+		}
+
+		img {
+			transform: none;
+		}
+		.info {
+			.info__name {
+				font-size: 17px;
+				padding-bottom: 15px;
+			}
+			.info__price {
+				font-size: 20px;
+
+				span {
+					font-size: 20px;
+				}
+			}
+
+			button {
+				font-size: 14px;
+			}
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		// Стили для планшетов и телефонов
+		.imageContainer {
+			width: 250px;
+			height: 350px;
+		}
+		.info {
+			.info__name {
+				font-size: 14px;
+				padding-bottom: 10px;
+			}
+			.info__price {
+				font-size: 18px;
+
+				span {
+					font-size: 18px;
+				}
+			}
+
+			button {
+				font-size: 12px;
+			}
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		// Стили для телефонов
+		.imageContainer {
+			width: 200px;
+			height: 300px;
+		}
+		.info {
+			.info__name {
+				font-size: 11px;
+				padding-bottom: 5px;
+			}
+			.info__price {
+				font-size: 16px;
+
+				span {
+					font-size: 16px;
+				}
+			}
+			button {
+				font-size: 10px;
+			}
 		}
 	}
 }
