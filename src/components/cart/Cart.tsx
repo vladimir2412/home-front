@@ -17,6 +17,7 @@ const Cart = () => {
 		alert('Замовлення оформлено');
 		navigate('/');
 	};
+	console.log(data);
 	return (
 		<>
 			{isLoading ? (

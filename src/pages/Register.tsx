@@ -1,9 +1,10 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useEffect } from 'react';
 import * as Yup from 'yup';
 import { useRegisterMutation } from '../store/services/shopApi';
-import { AuthContext } from '../AuthContext';
 import Cookies from 'js-cookie';
+import styles from '../styles/modules/Auth.module.scss';
+import Header from '../components/header/Header';
+import Footer from '../components/footer/Footer';
 const Register = () => {
 	const [register] = useRegisterMutation();
 	const initialValues = {
@@ -40,25 +41,46 @@ const Register = () => {
 
 	return (
 		<>
-			<Formik
-				initialValues={initialValues}
-				validationSchema={validationSchema}
-				onSubmit={handleSubmit}
-			>
-				<Form>
-					<div>
-						<label htmlFor="login">Login</label>
-						<Field type="text" id="login" name="login" />
-						<ErrorMessage name="login" component="div" className="error" />
+			<Header />
+			<div className={styles.container}>
+				<p className={styles.container__title}>Реєстрація</p>
+				<div className={styles.form__container}>
+					<div className={styles.form}>
+						<Formik
+							initialValues={initialValues}
+							validationSchema={validationSchema}
+							onSubmit={handleSubmit}
+						>
+							<Form>
+								<div className={styles.form__group}>
+									<p className={styles.form__title}>Заповніть форму</p>
+									<Field
+										className={styles.form__input}
+										type="text"
+										id="login"
+										name="login"
+										placeholder="Придумайте логін"
+									/>
+									<ErrorMessage className={styles.form__error} name="login" component="div" />
+									<Field
+										className={styles.form__input}
+										type="password"
+										id="password"
+										name="password"
+										placeholder="Придумайте пароль"
+									/>
+									<ErrorMessage className={styles.form__error} name="password" component="div" />
+								</div>
+								<div className={styles.form__button}>
+									<button type="submit">Зареєструватися</button>
+								</div>
+							</Form>
+						</Formik>
 					</div>
-					<div>
-						<label htmlFor="password">Password</label>
-						<Field type="password" id="password" name="password" />
-						<ErrorMessage name="password" component="div" className="error" />
-					</div>
-					<button type="submit">Register</button>
-				</Form>
-			</Formik>
+				</div>
+			</div>
+
+			<Footer />
 		</>
 	);
 };

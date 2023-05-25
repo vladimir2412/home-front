@@ -1,0 +1,50 @@
+.footer {
+	background: blanchedalmond;
+	min-height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: auto;
+
+	.content {
+		font-size: 16px;
+		font-weight: 600;
+		display: flex;
+		align-items: center;
+	}
+	.content a {
+		display: flex;
+		align-items: center;
+		transition: 200ms linear;
+	}
+	.content a:hover {
+		color: #0038ff;
+	}
+
+	@media screen and (max-width: 1024px) {
+		/* Стили для ноутбуков и планшетов */
+		.footer {
+			height: 50px;
+			.content {
+				font-size: 14px;
+			}
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		/* Стили для планшетов и телефонов */
+		.content {
+			font-size: 12px;
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		/* Стили для телефонов */
+		.footer {
+			height: 80px;
+			.content {
+				font-size: 14px;
+			}
+		}
+	}
+}
