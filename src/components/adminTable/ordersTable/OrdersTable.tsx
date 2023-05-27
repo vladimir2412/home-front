@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import styles from './orderstable.module.scss';
 import { useGetOrdersQuery } from '../../../store/services/shopApi';
+import OrderDitails from '../../orderDetails/OrderDitails';
 const OrdersTable = () => {
 	const [updateOrderVisible, setUpdateOrderVisible] = useState({
 		visible: false,
 		id_tovara: 0,
 	});
-	const { data } = useGetOrdersQuery();
+	const { data, isLoading } = useGetOrdersQuery();
 	const handleUpdate = (id: number) => {
 		setUpdateOrderVisible((prev) => ({ ...prev, visible: true, id_tovara: id }));
 	};
-
 	return (
 		<div>
 			<h2 style={{ textAlign: 'center', marginTop: '20px', fontSize: '24px', fontWeight: '500' }}>

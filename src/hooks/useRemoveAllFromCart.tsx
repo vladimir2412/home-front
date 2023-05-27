@@ -1,20 +1,19 @@
 import { useAddProductToCartMutation } from '../store/services/shopApi';
 
-const useAddToCart = () => {
+const useRemoveAllFromCart = () => {
 	const [addToCartMutation] = useAddProductToCartMutation();
 
-	const addToCart = async (id: number) => {
-		id = Number(id);
+	const removeAllFromCart = async (id: number) => {
 		const user_id = Number(localStorage.getItem('id'));
 		const item = {
 			id_tovara: id,
-			quantity: 1,
+			quantity: Number.MIN_SAFE_INTEGER,
 		};
 		const body = { user_id, item };
 		await addToCartMutation(body);
 	};
 
-	return { addToCart };
+	return { removeAllFromCart };
 };
 
-export default useAddToCart;
+export default useRemoveAllFromCart;

@@ -1,21 +1,126 @@
 .wrapper {
-	width: 100%;
-	margin: 0 auto;
-	margin-top: 40px;
+	background: blanchedalmond;
+	position: sticky;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-	.links {
+	.navigation {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		column-gap: 20px;
-		a {
-			text-decoration: none;
-			color: #000;
-			padding: 10px 20px;
-			border-radius: 5px;
-			background-color: #f0f0f0;
+		flex-grow: 1;
+		font-size: 20px;
+		font-weight: 700;
+
+		> * + * {
+			margin-left: 20px;
+		}
+		> * {
+			transition: 200ms linear;
+		}
+		> * {
 			&:hover {
-				background-color: #ccc;
+				color: #ef4744; // Здесь можно указать желаемый цвет при наведении
+			}
+		}
+	}
+
+	.links {
+		display: flex;
+		align-items: center;
+		margin-right: 20px;
+		padding: 15px;
+
+		> * + * {
+			margin-left: 20px;
+		}
+		.links__cart {
+			display: relative;
+			.cart__counter {
+				position: absolute;
+				right: 33px;
+				top: 37px;
+				background-color: #ef4744;
+				border-radius: 50%;
+				padding: 2px 5px 2px 5px;
+				color: #fff;
+				font-weight: 600;
+			}
+		}
+	}
+	// Медиа-запросы для разных устройств
+	@media screen and (max-width: 1024px) {
+		// Стили для ноутбуков и планшетов
+		.navigation {
+			font-size: 16px;
+			font-weight: 700;
+		}
+		.links svg {
+			width: 30px;
+			height: 30px;
+		}
+		.links {
+			.links__cart {
+				.cart__counter {
+					right: 34px;
+					top: 34px;
+					font-size: 14px;
+					padding: 2px 4px;
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		// Стили для планшетов и телефонов
+		.navigation {
+			font-weight: 700;
+		}
+		.links {
+			margin-right: 0;
+			justify-content: flex-end;
+		}
+		.links svg {
+			width: 27px;
+			height: 27px;
+		}
+		.links {
+			.links__cart {
+				.cart__counter {
+					right: 16px;
+					top: 32px;
+					font-size: 12px;
+					padding: 1px 3px;
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		// Стили для телефонов
+		.navigation {
+			font-size: 14px;
+			justify-content: flex-start;
+			margin-left: 20px;
+			font-weight: 700;
+		}
+		.links svg {
+			width: 25px;
+			height: 25px;
+		}
+		.links {
+			.links__cart {
+				.cart__counter {
+					right: 18px;
+					top: 30px;
+					font-size: 10px;
+					padding: 2px 3px 1px 3px;
+				}
 			}
 		}
 	}
