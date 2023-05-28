@@ -12,7 +12,7 @@ interface ProductCardProps {
 const ProductCard = ({ id, name, price, img }: ProductCardProps) => {
 	const { addToCart } = useAddToCart();
 	const handleAddToCart = (id: number) => {
-		addToCart(id);
+		addToCart(id, price);
 	};
 	return (
 		<>
