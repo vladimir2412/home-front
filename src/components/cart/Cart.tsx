@@ -26,26 +26,34 @@ const Cart = () => {
 				</div>
 			) : (
 				<>
-					<div className={styles.container}>
-						<p className={styles.container__order}>Ваше замовлення</p>
-						{data?.items.map((tovar) => {
-							return (
-								<CartItem
-									key={tovar.id_tovara}
-									quantity={tovar.quantity}
-									id_tovara={tovar.id_tovara}
-								/>
-							);
-						})}
-						<p className={styles.container__sum}>Разом:</p>
-						{sumQuantity !== 0 ? (
-							<div className={styles.container__button}>
-								<button onClick={() => handleSubmit()}>Замовити</button>
+					{data?.items.length > 0 ? (
+						<>
+							<div className={styles.container}>
+								<p className={styles.container__order}>Ваше замовлення</p>
+								{data?.items.map((tovar) => {
+									return (
+										<CartItem
+											key={tovar.id_tovara}
+											quantity={tovar.quantity}
+											id_tovara={tovar.id_tovara}
+										/>
+									);
+								})}
+								<p className={styles.container__sum}>Разом: {data?.totalAmount} грн</p>
+								{sumQuantity !== 0 ? (
+									<div className={styles.container__button}>
+										<button onClick={() => handleSubmit()}>Замовити</button>
+									</div>
+								) : (
+									''
+								)}
 							</div>
-						) : (
-							''
-						)}
-					</div>
+						</>
+					) : (
+						<>
+							<h1>Кошик пустий</h1>
+						</>
+					)}
 				</>
 			)}
 		</>

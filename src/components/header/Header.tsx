@@ -46,7 +46,7 @@ const Header = () => {
 						/>
 						<path d="M9 13H11V18H9V13ZM13 13H15V18H13V13Z" fill="black" />
 					</svg>
-					<p className={styles.cart__counter}>{sum}</p>
+					<p className={styles.cart__counter}>{sum ? sum : 0}</p>
 				</Link>
 			</div>
 		</nav>

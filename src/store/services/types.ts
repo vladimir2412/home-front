@@ -29,4 +29,5 @@ export interface ICartPost {
 export interface ICart {
 	user_id: number;
 	items: ICartItem[];
+	totalAmount: number;
 }
