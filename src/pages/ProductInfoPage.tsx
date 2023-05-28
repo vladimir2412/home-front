@@ -9,7 +9,9 @@ const ProductInfoPage = () => {
 	const { data, isLoading } = useGetProductByIdQuery(Number(id));
 	const { addToCart } = useAddToCart();
 	const handleAddToCart = (id: number) => {
-		addToCart(id);
+		if (data?.price) {
+			addToCart(id, data.price);
+		}
 	};
 	return (
 		<>
@@ -22,13 +24,13 @@ const ProductInfoPage = () => {
 				<>
 					<div className={styles.container}>
 						<div className={styles.img}>
-							<img src={data.img} alt={data.name} />
+							<img src={data?.img} alt={data?.name} />
 						</div>
 						<div className={styles.info}>
-							<p className={styles.info__name}>{data.name}</p>
+							<p className={styles.info__name}>{data?.name}</p>
 							<hr />
-							<p className={styles.info__price}>{data.price} грн/шт.</p>
-							<button onClick={() => handleAddToCart(id)}>Додати до кошика</button>
+							<p className={styles.info__price}>{data?.price} грн/шт.</p>
+							<button onClick={() => handleAddToCart(Number(id))}>Додати до кошика</button>
 						</div>
 					</div>
 				</>

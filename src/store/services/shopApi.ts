@@ -60,6 +60,9 @@ export const shopApi = createApi({
 		getCartById: builder.query<ICart, number>({
 			query: (id) => ({
 				url: `/cart/${id}`,
+				headers: {
+					Authorization: `Bearer ${Cookies.get('accessToken')}`,
+				},
 			}),
 			providesTags: (result) => ['Cart'],
 		}),
@@ -68,6 +71,9 @@ export const shopApi = createApi({
 				url: `/cart`,
 				method: 'POST',
 				body: body,
+				headers: {
+					Authorization: `Bearer ${Cookies.get('accessToken')}`,
+				},
 			}),
 			invalidatesTags: ['Cart'],
 		}),

@@ -27,12 +27,12 @@ const CartItem = ({ quantity, id_tovara }: CartItemProps) => {
 					<hr />
 					<div className={styles.info}>
 						<div className={styles.info__img}>
-							<img src={data.img} alt={data.name} />
+							<img src={data?.img} alt={data?.name} />
 						</div>
 						<div className={styles.info__container}>
 							<div className={styles.container__title}>
-								<p className={styles.container__name}>{data.name}</p>
-								<p className={styles.container__price}>{data.price} грн</p>
+								<p className={styles.container__name}>{data?.name}</p>
+								<p className={styles.container__price}>{data?.price} грн</p>
 								<svg
 									width="24"
 									height="24"
@@ -72,7 +72,11 @@ const CartItem = ({ quantity, id_tovara }: CartItemProps) => {
 										viewBox="0 0 24 24"
 										fill="none"
 										xmlns="http://www.w3.org/2000/svg"
-										onClick={() => addToCart(id_tovara)}
+										onClick={() => {
+											if (data?.price) {
+												addToCart(id_tovara, data.price);
+											}
+										}}
 									>
 										<path d="M19 11H13V5H11V11H5V13H11V19H13V13H19V11Z" fill="black" />
 									</svg>
