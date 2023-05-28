@@ -3,6 +3,7 @@ import Loader from '../loader/Loader';
 import CartItem from './cartItem/CartItem';
 import { useNavigate } from 'react-router-dom';
 import styles from '../../styles/modules/Cart.module.scss';
+import CartEmpty from '../cartEmpty/CartEmpty';
 const Cart = () => {
 	const navigate = useNavigate();
 	const id = Number(localStorage.getItem('id'));
@@ -51,7 +52,7 @@ const Cart = () => {
 						</>
 					) : (
 						<>
-							<h1>Кошик пустий</h1>
+							<CartEmpty />
 						</>
 					)}
 				</>
