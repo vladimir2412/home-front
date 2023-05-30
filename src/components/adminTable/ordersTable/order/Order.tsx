@@ -1,6 +1,4 @@
 import { useGetOrdersQuery } from '../../../../store/services/shopApi';
-import Loader from '../../../loader/Loader';
-import OrderDitails from '../../../orderDetails/OrderDitails';
 
 const Order = () => {
 	const { data, isLoading } = useGetOrdersQuery();
@@ -37,19 +35,6 @@ const Order = () => {
 										</g>
 									</g>
 								</svg>
-								{isLoading ? (
-									'Loading...'
-								) : (
-									<>
-										{order.items.map((tovar) => (
-											<OrderDitails
-												key={tovar.id_tovara}
-												id_tovara={tovar.id_tovara}
-												quantity={tovar.quantity}
-											/>
-										))}
-									</>
-								)}
 							</td>
 							<td>
 								<button>Update</button>

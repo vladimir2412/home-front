@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import styles from './orderstable.module.scss';
+import styles from '../../../styles/modules/AdminTables.module.scss';
 import Order from './order/Order';
+import Sidebar from '../../sidebar/Sidebar';
 
 const OrdersTable = () => {
 	const [updateOrderVisible, setUpdateOrderVisible] = useState({
@@ -11,24 +12,25 @@ const OrdersTable = () => {
 		setUpdateOrderVisible((prev) => ({ ...prev, visible: true, id_tovara: id }));
 	};
 	return (
-		<div>
-			<h2 style={{ textAlign: 'center', marginTop: '20px', fontSize: '24px', fontWeight: '500' }}>
-				Таблиця Замовлень
-			</h2>
-			<table className={styles.table}>
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Summary price</th>
-						<th>User ID</th>
-						<th>Products</th>
-						<th>Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					<Order />
-				</tbody>
-			</table>
+		<div style={{ display: 'flex' }}>
+			<Sidebar />
+			<div className={styles.container}>
+				<p>Таблиця Замовлень</p>
+				<table className={styles.table}>
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Summary price</th>
+							<th>User ID</th>
+							<th>Products</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<Order />
+					</tbody>
+				</table>
+			</div>
 		</div>
 	);
 };

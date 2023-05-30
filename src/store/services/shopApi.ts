@@ -83,11 +83,11 @@ export const shopApi = createApi({
 			}),
 			providesTags: ['Order'],
 		}),
-		submitOrder: builder.mutation<void, void>({
-			query: (id) => ({
+		submitOrder: builder.mutation<void, unknown>({
+			query: (body) => ({
 				url: `/orders`,
 				method: 'POST',
-				body: id,
+				body: body,
 			}),
 			invalidatesTags: ['Cart'],
 		}),

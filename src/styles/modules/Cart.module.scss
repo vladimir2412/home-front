@@ -1,104 +1,149 @@
 .container {
 	max-width: 1300px;
 	margin: 0 auto;
-
-	.container__order {
+	&__order {
 		margin-top: 30px;
 		font-size: 20px;
 		font-weight: 600;
 	}
-
-	.info {
+	&__wrapper {
 		display: flex;
-		flex-wrap: wrap;
-		margin-left: 20px;
+	}
+	&__cart {
+		width: 60%;
+		margin: 25px 0 20px 0;
+		max-height: 535px;
+		overflow: auto;
 
-		.info__img {
-			width: 15%;
-			margin-right: 25px;
-
-			/* Респонсивные стили для ноутбуков и планшетов */
-			@media screen and (max-width: 1024px) {
-				width: 20%;
-			}
-
-			/* Респонсивные стили для телефонов */
-			@media screen and (max-width: 480px) {
-				width: 50%;
-				margin-right: 10px;
-			}
-		}
-
-		.info__img img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			background-position: center;
-		}
-
-		.info__container {
-			width: 30%;
+		.info {
 			display: flex;
-			flex-direction: column;
-			position: relative;
+			flex-wrap: wrap;
+			margin-left: 20px;
 
-			/* Респонсивные стили для ноутбуков и планшетов */
-			@media screen and (max-width: 1024px) {
-				width: 35%;
+			.info__img {
+				width: 250px;
+				height: 250px;
+				margin-right: 25px;
+
+				/* Респонсивные стили для ноутбуков и планшетов */
+				@media screen and (max-width: 1024px) {
+					width: 20%;
+				}
+
+				/* Респонсивные стили для телефонов */
+				@media screen and (max-width: 480px) {
+					width: 50%;
+					margin-right: 10px;
+				}
 			}
 
-			/* Респонсивные стили для телефонов */
-			@media screen and (max-width: 480px) {
+			.info__img img {
 				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				background-position: center;
 			}
 
-			.container__title {
+			.info__container {
+				width: 55%;
 				display: flex;
-				justify-content: space-between;
-				margin-bottom: 20px;
+				flex-direction: column;
+				position: relative;
 
-				.container__name {
-					font-weight: 700;
+				/* Респонсивные стили для ноутбуков и планшетов */
+				@media screen and (max-width: 1024px) {
+					width: 35%;
+				}
+
+				/* Респонсивные стили для телефонов */
+				@media screen and (max-width: 480px) {
+					width: 100%;
+				}
+
+				.container__title {
+					display: flex;
+					justify-content: space-between;
+					margin: 15px 0 20px 0;
+
+					.container__name {
+						font-weight: 700;
+						font-size: 20px;
+						letter-spacing: 3px;
+						padding-bottom: 5px;
+					}
+
+					.container__price {
+						font-size: 18px;
+						font-weight: 600;
+					}
+
+					.container__XSvg {
+						position: absolute;
+						right: -40px;
+						top: 8px;
+						cursor: pointer;
+					}
+				}
+
+				.container__paragraph {
+					display: flex;
+					justify-content: space-between;
+
+					.container__quantity {
+						font-size: 19px;
+					}
+				}
+
+				.container__paragraph span {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					border: solid 0.5px #000;
+					padding: 2px;
+					border-radius: 3px;
 					font-size: 20px;
-					letter-spacing: 3px;
-					padding-bottom: 5px;
 				}
 
-				.container__price {
-					font-size: 18px;
-					font-weight: 600;
-				}
-
-				.container__XSvg {
-					position: absolute;
-					right: -40px;
-					top: -5px;
+				.container__paragraph svg {
+					margin: 0 10px 0 10px;
 					cursor: pointer;
 				}
 			}
+		}
+	}
+	.container__form {
+		width: 40%;
+		margin-left: 30px;
+		margin-right: 30px;
+		.container__order {
+			margin-top: 30px;
+			font-size: 20px;
+			font-weight: 600;
+		}
+		.form {
+			display: flex;
+			margin: 0 auto;
+			max-width: 80%;
 
-			.container__paragraph {
-				display: flex;
-				justify-content: space-between;
-
-				.container__quantity {
-					font-size: 19px;
-				}
-			}
-
-			.container__paragraph span {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				border: solid 0.5px #000;
-				padding: 2px;
+			.form__input {
+				border: none;
+				border: 1px solid rgba(51, 51, 51, 0.6);
 				border-radius: 3px;
-				font-size: 20px;
+				padding: 6px 15px;
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 160.5%;
+				letter-spacing: 0.1em;
+				color: #333333;
+				width: 100%;
+				box-sizing: border-box;
+				opacity: 1;
+				margin-top: 15px;
 			}
-
-			.container__paragraph svg {
-				margin: 0 10px 0 10px;
-				cursor: pointer;
+			.form__error {
+				color: red;
+				font-weight: 500;
+				margin-top: 5px;
 			}
 		}
 	}
@@ -225,4 +270,54 @@
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+}
+.cart__empty {
+	margin: 80px auto 0 auto;
+	width: 620px;
+	text-align: center;
+
+	h2 {
+		font-size: 36px;
+		font-weight: 700;
+		margin-bottom: 15px;
+	}
+
+	p {
+		font-size: 20px;
+		line-height: 145.4%;
+		letter-spacing: 0.01em;
+		color: #777777;
+	}
+
+	icon {
+		position: relative;
+		top: 2px;
+	}
+
+	img {
+		display: block;
+		width: 300px;
+		margin: 45px auto 60px;
+	}
+
+	.container__button {
+		display: flex;
+		justify-content: center;
+	}
+	button {
+		margin: 20px 0 30px 0;
+		width: 50%;
+		color: #fff;
+		background-color: #ef4744;
+		border: none;
+		padding: 15px;
+		font-weight: 600;
+		font-size: 16px;
+		transition: 200ms linear;
+	}
+	button:hover {
+		background-color: #ef4744;
+		opacity: 0.8;
+		cursor: pointer;
+	}
 }

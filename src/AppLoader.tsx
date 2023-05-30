@@ -8,6 +8,9 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import PermissionWrapper from './wrappers/PermissionWrapper';
 import AuthWrapper from './wrappers/AuthWrapper';
+import ProductsTable from './components/adminTable/productsTable/ProductsTable';
+import OrdersTable from './components/adminTable/ordersTable/OrdersTable';
+import UsersTable from './components/adminTable/usersTable/UsersTable';
 
 const AppLoader = () => {
 	return (
@@ -42,6 +45,30 @@ const AppLoader = () => {
 				element={
 					<PermissionWrapper allowedRole={['admin']}>
 						<AdminPage />
+					</PermissionWrapper>
+				}
+			/>
+			<Route
+				path={'/admin/products-table'}
+				element={
+					<PermissionWrapper allowedRole={['admin']}>
+						<ProductsTable />
+					</PermissionWrapper>
+				}
+			/>
+			<Route
+				path={'/admin/orders-table'}
+				element={
+					<PermissionWrapper allowedRole={['admin']}>
+						<OrdersTable />
+					</PermissionWrapper>
+				}
+			/>
+			<Route
+				path={'/admin/users-table'}
+				element={
+					<PermissionWrapper allowedRole={['admin']}>
+						<UsersTable />
 					</PermissionWrapper>
 				}
 			/>

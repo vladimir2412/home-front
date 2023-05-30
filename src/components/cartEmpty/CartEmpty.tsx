@@ -1,19 +1,19 @@
-import React from 'react';
 import cartEmptyImg from '../../assets/empty-cart.png';
 import { Link } from 'react-router-dom';
+import styles from '../../styles/modules/Cart.module.scss';
 const CartEmpty = () => {
 	return (
 		<>
-			<div className="cart cart--empty">
-				<h2>Кошик пустий 😕</h2>
+			<div className={styles.cart__empty}>
+				<h2>Cart is empty 😕</h2>
 				<p>
-					Скоріш за все, ви ще нічого не замовили.
+					Most likely, you haven't ordered anything yet.
 					<br />
-					Для того, щоб замовити продукт, перейдіть на головну сторінку.
+					To order the product, go to the product page.
 				</p>
 				<img src={cartEmptyImg} alt="Empty cart" />
-				<Link to="/" className="button button--black">
-					<span>Повернутися назад</span>
+				<Link to="/products" className={styles.container__button}>
+					<button>Go back</button>
 				</Link>
 			</div>
 		</>

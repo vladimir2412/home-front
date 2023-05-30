@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
 import { useGetProductByIdQuery } from '../store/services/shopApi';
 import styles from '../styles/modules/ProductInfoPage.module.scss';
-import Loader from '../components/loader/Loader';
+import Loader from '../components/loader/PageLoader';
 import useAddToCart from '../hooks/useAddToCart';
 import Header from '../components/header/Header';
 const ProductInfoPage = () => {

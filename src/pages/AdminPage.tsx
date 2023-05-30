@@ -1,15 +1,11 @@
-import React from 'react';
-import ProductsTable from '../components/adminTable/ProductsTable';
-import UsersTable from '../components/adminTable/usersTable/UsersTable';
-import OrdersTable from '../components/adminTable/ordersTable/OrdersTable';
+import Sidebar from '../components/sidebar/Sidebar';
+import styles from '../styles/modules/AdminPage.module.scss';
 
 const AdminPage = () => {
 	return (
-		<div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-			<h1 style={{ marginTop: '40px' }}>Admin Page</h1>
-			<ProductsTable />
-			<OrdersTable />
-			<UsersTable />
+		<div className={styles.container}>
+			<Sidebar />
+			<h1>Admin Page</h1>
 		</div>
 	);
 };
