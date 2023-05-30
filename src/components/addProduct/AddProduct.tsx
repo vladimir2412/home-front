@@ -62,36 +62,36 @@ const AddProduct = ({ onClose }) => {
 				>
 					<Form>
 						<div>
-							<label htmlFor="name">Назва</label>
+							<label htmlFor="name">Title</label>
 							<Field type="text" id="name" name="name" />
 							<ErrorMessage name="name" component="div" />
 						</div>
 
 						<div>
-							<label htmlFor="property1">Властивість 1</label>
+							<label htmlFor="property1">Stock quantity</label>
 							<Field type="text" id="property1" name="property1" />
 							<ErrorMessage name="property1" component="div" />
 						</div>
 
 						<div>
-							<label htmlFor="property2">Властивість 2</label>
+							<label htmlFor="property2">Discount (in percent)</label>
 							<Field type="text" id="property2" name="property2" />
 							<ErrorMessage name="property2" component="div" />
 						</div>
 
 						<div>
-							<label htmlFor="price">Ціна</label>
+							<label htmlFor="price">Price</label>
 							<Field type="number" id="price" name="price" />
 							<ErrorMessage name="price" component="div" />
 						</div>
 
 						<div>
-							<label htmlFor="img">Зображення</label>
+							<label htmlFor="img">Image (URL)</label>
 							<Field type="text" id="img" name="img" />
 							<ErrorMessage name="img" component="div" />
 						</div>
 
-						<button type="submit">Додати продукт</button>
+						<button type="submit">Add product</button>
 					</Form>
 				</Formik>
 			</div>

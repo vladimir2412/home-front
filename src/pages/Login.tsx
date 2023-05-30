@@ -20,16 +20,16 @@ const Login = () => {
 	const handleSubmit = async (values, { setSubmitting }) => {
 		try {
 			const response = await login({ login: values.login, password: values.password });
-			if (response.data.success) {
+			if (response?.data?.success) {
 				const { accessToken, refreshToken, id } = response.data;
 				Cookies.set('accessToken', accessToken);
 				Cookies.set('refreshToken', refreshToken);
 				localStorage.setItem('isAuth', 'true');
 				localStorage.setItem('id', id);
-				alert('Успішна авторизація');
+				alert('Successful authorization');
 				window.location.href = '/';
 			} else {
-				alert('Невірний логін або пароль');
+				alert('Incorrect login or password');
 			}
 		} catch (error) {
 			console.log(error);
@@ -42,7 +42,7 @@ const Login = () => {
 		<>
 			<Header />
 			<div className={styles.container}>
-				<p className={styles.container__title}>Вхід</p>
+				<p className={styles.container__title}>Login</p>
 				<div className={styles.form__container}>
 					<div className={styles.form}>
 						<Formik
@@ -52,13 +52,13 @@ const Login = () => {
 						>
 							<Form>
 								<div className={styles.form__group}>
-									<p className={styles.form__title}>Заповніть форму</p>
+									<p className={styles.form__title}>Fill out the form</p>
 									<Field
 										className={styles.form__input}
 										type="text"
 										id="login"
 										name="login"
-										placeholder="Введіть логін"
+										placeholder="Enter your login"
 									/>
 									<ErrorMessage className={styles.form__error} name="login" component="div" />
 
@@ -67,21 +67,21 @@ const Login = () => {
 										type="password"
 										id="password"
 										name="password"
-										placeholder="Введіть пароль"
+										placeholder="Enter your password"
 									/>
 									<ErrorMessage className={styles.form__error} name="password" component="div" />
 								</div>
 								<div className={styles.form__button}>
-									<button type="submit">Увійти</button>
+									<button type="submit">Login</button>
 								</div>
 							</Form>
 						</Formik>
 					</div>
 					<div className={styles.register}>
-						<p className={styles.register__title}>Новий клієнт?</p>
-						<p className={styles.register__info}>Реєстрація займе до 1 хвилини</p>
+						<p className={styles.register__title}>New customer?</p>
+						<p className={styles.register__info}>Registration takes up to 1 minute</p>
 						<Link to="/register" className={styles.register__link}>
-							<p>Реєстрація</p>
+							<p>Registration</p>
 						</Link>
 					</div>
 				</div>

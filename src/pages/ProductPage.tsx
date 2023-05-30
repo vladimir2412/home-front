@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useGetProductsQuery } from '../store/services/shopApi';
 import ProductCard from '../components/product/ProductCard';
 import styles from '../styles/modules/ProductPage.module.scss';
@@ -6,7 +5,6 @@ import Loader from '../components/loader/PageLoader';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
 const ProductPage = () => {
-	const [count, setCount] = useState(0);
 	const { data, isLoading } = useGetProductsQuery();
 	return (
 		<>

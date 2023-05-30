@@ -11,11 +11,11 @@ const Home = () => {
 				<div className={styles.container__img}>
 					<img
 						src={'https://bakerstreetbakery.com.ua/files/resized/slides/img_0248-2.1980x700.jpg'}
-						alt="Тарталетки на будь-який смак"
+						alt="TARTLETS FOR EVERY TASTE"
 					/>
-					<p className={styles.img__title}>Тарталетки на будь - який смак</p>
+					<p className={styles.img__title}>TARTLETS FOR EVERY TASTE</p>
 					<Link to={'/products'} className={styles.img__link}>
-						<p>Подивитись всі</p>
+						<p>View all</p>
 					</Link>
 				</div>
 			</div>

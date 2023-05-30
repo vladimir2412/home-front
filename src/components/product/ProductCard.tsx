@@ -30,7 +30,7 @@ const ProductCard = ({ id, name, price, img }: ProductCardProps) => {
 						Ціна: <span>{price} грн</span>
 					</p>
 					<div className={styles.info__buttons}>
-						<button onClick={() => handleAddToCart(id)}>Додати до кошика</button>
+						<button onClick={() => handleAddToCart(id)}>Add to cart</button>
 					</div>
 				</div>
 			</div>

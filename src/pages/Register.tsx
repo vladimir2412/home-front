@@ -29,7 +29,7 @@ const Register = () => {
 				Cookies.set('accessToken', response.data.accessToken);
 				Cookies.set('refreshToken', response.data.refreshToken);
 				localStorage.setItem('id', response.data.id);
-				alert('Успішна реєстрація');
+				alert('Successful registration');
 				window.location.href = '/';
 			}
 		} catch (error) {
@@ -43,7 +43,7 @@ const Register = () => {
 		<>
 			<Header />
 			<div className={styles.container}>
-				<p className={styles.container__title}>Реєстрація</p>
+				<p className={styles.container__title}>Registration</p>
 				<div className={styles.form__container}>
 					<div className={styles.form}>
 						<Formik
@@ -53,13 +53,13 @@ const Register = () => {
 						>
 							<Form>
 								<div className={styles.form__group}>
-									<p className={styles.form__title}>Заповніть форму</p>
+									<p className={styles.form__title}>Fill out the form</p>
 									<Field
 										className={styles.form__input}
 										type="text"
 										id="login"
 										name="login"
-										placeholder="Придумайте логін"
+										placeholder="Create a login"
 									/>
 									<ErrorMessage className={styles.form__error} name="login" component="div" />
 									<Field
@@ -67,12 +67,12 @@ const Register = () => {
 										type="password"
 										id="password"
 										name="password"
-										placeholder="Придумайте пароль"
+										placeholder="Create a password"
 									/>
 									<ErrorMessage className={styles.form__error} name="password" component="div" />
 								</div>
 								<div className={styles.form__button}>
-									<button type="submit">Зареєструватися</button>
+									<button type="submit">Register now</button>
 								</div>
 							</Form>
 						</Formik>

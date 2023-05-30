@@ -29,8 +29,8 @@ const ProductInfoPage = () => {
 						<div className={styles.info}>
 							<p className={styles.info__name}>{data?.name}</p>
 							<hr />
-							<p className={styles.info__price}>{data?.price} грн/шт.</p>
-							<button onClick={() => handleAddToCart(Number(id))}>Додати до кошика</button>
+							<p className={styles.info__price}>{data?.price} UAH/each</p>
+							<button onClick={() => handleAddToCart(Number(id))}>Add to cart</button>
 						</div>
 					</div>
 				</>

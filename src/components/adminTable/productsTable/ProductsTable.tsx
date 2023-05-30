@@ -30,9 +30,9 @@ const ProductsTable = () => {
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>Name</th>
-							<th>Property 1</th>
-							<th>Property 2</th>
+							<th>Title</th>
+							<th>Stock quantity</th>
+							<th>Discount (in percent)</th>
 							<th>Price</th>
 							<th>Actions</th>
 						</tr>
