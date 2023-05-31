@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import database from '../components/Database/MeatProducts.json';
 import styles from '../styles/modules/GrilledMeatPage.module.scss';
 import Header from '../components/header/Header';
-import GrilledMeatCard from '../components/grilledMeatCard/grilledMeatCard';
+import GrilledMeatCard from '../components/grilledMeatCard/GrilledMeatCard';
 const GrilledMeatListPage = () => {
 	const [products, setProducts] = useState([]);
 	useEffect(() => {
