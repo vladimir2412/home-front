@@ -1,0 +1,25 @@
+.container {
+	&__text {
+		display: flex;
+		justify-content: center;
+		margin: 25px 0 25px 0;
+		p {
+			font-size: 30px;
+			font-weight: 600;
+		}
+	}
+	&__shops {
+		display: flex;
+		justify-content: center;
+	}
+	&__shops > *:not(:last-child) {
+		margin-left: 20px;
+	}
+	&__shops > :last-child {
+		margin-left: 20px;
+	}
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}

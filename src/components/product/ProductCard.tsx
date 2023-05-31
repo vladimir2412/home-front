@@ -17,13 +17,13 @@ const ProductCard = ({ id, name, price, img }: ProductCardProps) => {
 	return (
 		<>
 			<div className={styles.container}>
-				<Link to={`/products/${id}`}>
+				<Link to={`/${id}`}>
 					<div className={styles.imageContainer}>
 						<img src={img} alt={name} />
 					</div>
 				</Link>
 				<div className={styles.info}>
-					<Link to={`/products/${id}`}>
+					<Link to={`/${id}`}>
 						<p className={styles.info__name}>{name}</p>
 					</Link>
 					<p className={styles.info__price}>

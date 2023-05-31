@@ -1,0 +1,40 @@
+.card__shop {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 5px 5px 20px 5px;
+	width: 100%;
+	max-width: 400px;
+	background-color: #f5f5f5;
+	color: #000;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	transition: border-color 0.3s;
+	cursor: pointer;
+
+	&:hover {
+		border-color: #999;
+		img {
+			filter: blur(8px);
+		}
+		.card__text {
+			transform: translateY(-400%);
+		}
+	}
+}
+
+.card__image {
+	width: 100%;
+	max-height: 300px;
+	object-fit: cover;
+	transition: transform 0.3s;
+}
+
+.card__text {
+	padding: 5px;
+	font-size: 30px;
+	font-weight: bold;
+	margin-top: 10px;
+	transition: transform 0.3s;
+}

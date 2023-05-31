@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
 import ProductPage from './pages/ProductPage';
 import AdminPage from './pages/AdminPage';
 import ProductInfoPage from './pages/ProductInfoPage';
@@ -11,11 +10,14 @@ import AuthWrapper from './wrappers/AuthWrapper';
 import ProductsTable from './components/adminTable/productsTable/ProductsTable';
 import OrdersTable from './components/adminTable/ordersTable/OrdersTable';
 import UsersTable from './components/adminTable/usersTable/UsersTable';
+import Shops from './pages/Shops';
+import GrilledMeatListPage from './pages/GrilledMeatListPage';
 
 const AppLoader = () => {
 	return (
 		<Routes>
-			<Route path={'/'} element={<Home />} />
+			<Route path={'/'} element={<Shops />} />
+			<Route path={'/grilled-meat'} element={<GrilledMeatListPage />} />
 			<Route
 				path={'/products'}
 				element={

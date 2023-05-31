@@ -1,0 +1,74 @@
+{
+	"products": [
+		{
+			"id": 1,
+			"title": "Rib of ribs",
+			"image": "https://api.shashlikyan.ua/uploads/97/489518-0d04765b-1287-4af5-bd50-688612cb197c.webp",
+			"price": 258,
+			"weight": 300
+		},
+		{
+			"id": 2,
+			"title": "Lamb pulp kebab",
+			"image": "https://api.shashlikyan.ua/uploads/97/489514-50f35d70-9171-47c5-b94b-234434cbe550.webp",
+			"price": 362,
+			"weight": 100
+		},
+		{
+			"id": 3,
+			"title": "Veal tenderloin kebab",
+			"image": "https://api.shashlikyan.ua/uploads/97/489654-093bac34-240a-47db-99c6-998b211bffab.webp",
+			"price": 418,
+			"weight": 100
+		},
+		{
+			"id": 4,
+			"title": "Grilled salmon fillet",
+			"image": "https://api.shashlikyan.ua/uploads/97/489846-65971f5c-61a7-45c3-bcd9-682497bd01bf.webp",
+			"price": 375,
+			"weight": 150
+		},
+		{
+			"id": 5,
+			"title": "Veal loin kebab",
+			"image": "https://api.shashlikyan.ua/uploads/97/489842-d17199fb-4b34-4a27-abf9-ab20ce69929e.webp",
+			"price": 372,
+			"weight": 100
+		},
+		{
+			"id": 6,
+			"title": "Grilled quail",
+			"image": "https://api.shashlikyan.ua/uploads/97/489858-41fa14f5-8870-453b-91e3-7d1c8fca6dce.webp",
+			"price": 150,
+			"weight": 150
+		},
+		{
+			"id": 7,
+			"title": "Pork rib barbecue",
+			"image": "https://api.shashlikyan.ua/uploads/97/489650-8ec3f761-25dc-4b8f-a13e-ebcdc129797a.webp",
+			"price": 84,
+			"weight": 100
+		},
+		{
+			"id": 8,
+			"title": "Pork pulp barbecue",
+			"image": "https://api.shashlikyan.ua/uploads/97/489510-27e7bc33-f133-4fc5-b16f-ddbb715e99a9.webp",
+			"price": 90,
+			"weight": 100
+		},
+		{
+			"id": 9,
+			"title": "Grilled chicken",
+			"image": "https://api.shashlikyan.ua/uploads/97/489662-05198b75-e9e3-4756-b896-ac4b13c70f8a.webp",
+			"price": 200,
+			"weight": 200
+		},
+		{
+			"id": 10,
+			"title": "Kebab of chicken wings",
+			"image": "https://api.shashlikyan.ua/uploads/97/489562-0a019221-41aa-44cf-9d40-2695184d3ffd.webp",
+			"price": 52,
+			"weight": 100
+		}
+	]
+}
