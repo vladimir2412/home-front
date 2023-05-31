@@ -1,5 +1,5 @@
 import styles from '../../styles/modules/GrilledMeatPage.module.scss';
-const ProductCard = ({ title, image, price }) => {
+const GrilledMeatCard = ({ title, image, price }) => {
 	return (
 		<div className={styles.product__card}>
 			<img className={styles.product__card__image} src={image} alt={title} />
@@ -22,4 +22,4 @@ const ProductCard = ({ title, image, price }) => {
 	);
 };
 
-export default ProductCard;
+export default GrilledMeatCard;
