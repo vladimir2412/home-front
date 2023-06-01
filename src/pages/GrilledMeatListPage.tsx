@@ -5,7 +5,6 @@ import { useGetProductsQuery } from '../store/services/shopApi';
 import Loader from '../components/loader/PageLoader';
 const GrilledMeatListPage = () => {
 	const { data, isLoading } = useGetProductsQuery();
-	console.log(data);
 
 	return (
 		<>

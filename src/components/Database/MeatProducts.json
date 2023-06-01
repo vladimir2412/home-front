@@ -2,73 +2,73 @@
 	"products": [
 		{
 			"id": 1,
-			"title": "Rib of ribs",
-			"image": "https://api.shashlikyan.ua/uploads/97/489518-0d04765b-1287-4af5-bd50-688612cb197c.webp",
-			"price": 258,
-			"weight": 300
+			"title": "SET GURMAN",
+			"image": "https://x100-venus-sm-ua.gumlet.io/SKU/SUSHI-MASTER/%D0%A1%D0%B5%D1%82%D0%B8/152D5921-9C9F-11ED-8B10-F7FE9622126C-1969%D1%851100_0004_%D0%A1%D0%B5%D1%82-%D0%93%D1%83%D1%80%D0%BC%D0%B0%D0%BD.png?alt=media&token=c6e8840f-e58e-414b-a441-20d17a349ac9&w=991&h=700&format=webp&mode=fit&q=60",
+			"price": 699,
+			"weight": 880
 		},
 		{
 			"id": 2,
-			"title": "Lamb pulp kebab",
-			"image": "https://api.shashlikyan.ua/uploads/97/489514-50f35d70-9171-47c5-b94b-234434cbe550.webp",
-			"price": 362,
-			"weight": 100
+			"title": "SET SENSAY",
+			"image": "https://x100-venus-sm-ua.gumlet.io/SKU/SUSHI-MASTER/%D0%A1%D0%B5%D1%82%D0%B8/94E43C60-FB04-11ED-ACC7-C56BB5233BD5-1969%D1%851100_0002_%D0%A1%D0%B5%D1%82-%D0%A1%D0%B5%D0%BD%D1%81%D0%B5%D0%B9.png?alt=media&token=5cf332c2-b79b-417e-b7b9-b4c95194a023&w=991&h=700&format=webp&mode=fit&q=60",
+			"price": 549,
+			"weight": 1080
 		},
 		{
 			"id": 3,
-			"title": "Veal tenderloin kebab",
-			"image": "https://api.shashlikyan.ua/uploads/97/489654-093bac34-240a-47db-99c6-998b211bffab.webp",
-			"price": 418,
-			"weight": 100
+			"title": "SET UNBREAKABLE",
+			"image": "https://x100-venus-sm-ua.gumlet.io/SKU/SUSHI-MASTER/%D0%A1%D0%B5%D1%82%D0%B8/2884CC81-FDF5-11ED-82E6-4B1C3A074633-1969%D1%851100_0007_New_%D0%A1%D0%B5%D1%82-%D0%9D%D0%B5%D0%B7%D0%BB%D0%B0%D0%BC%D0%BD%D0%B8%D0%B9.png?alt=media&token=ef12e32b-9129-4f7d-9c49-f17710811bdd&w=991&h=700&format=webp&mode=fit&q=60",
+			"price": 699,
+			"weight": 1000
 		},
 		{
 			"id": 4,
-			"title": "Grilled salmon fillet",
-			"image": "https://api.shashlikyan.ua/uploads/97/489846-65971f5c-61a7-45c3-bcd9-682497bd01bf.webp",
-			"price": 375,
-			"weight": 150
+			"title": "SET BANZAI",
+			"image": "https://x100-venus-sm-ua.gumlet.io/SKU/SUSHI-MASTER/%D0%A1%D0%B5%D1%82%D0%B8/24251AC1-FF88-11ED-ACC7-C56BB5233BD5-1969%D1%851100_0001_%D0%A1%D0%95%D0%A2_%D0%91%D0%B0%D0%BD%D0%B7%D0%B0%D0%B9.png?alt=media&token=5b83a768-e8fc-4187-b5fe-332e02bbb725&w=991&h=700&format=webp&mode=fit&q=60",
+			"price": 599,
+			"weight": 1010
 		},
 		{
 			"id": 5,
-			"title": "Veal loin kebab",
-			"image": "https://api.shashlikyan.ua/uploads/97/489842-d17199fb-4b34-4a27-abf9-ab20ce69929e.webp",
-			"price": 372,
-			"weight": 100
+			"title": "SET KYOTO",
+			"image": "https://x100-venus-sm-ua.gumlet.io/SKU/SUSHI-MASTER/%D0%A1%D0%B5%D1%82%D0%B8/04192581-FF8A-11ED-ACC7-C56BB5233BD5-1969%D1%851100_0000_%D0%A1%D0%95%D0%A2_%D0%9A%D1%96%D0%BE%D1%82%D0%BE.png?alt=media&token=b8e87b89-1f01-4d24-b1e0-58731efbda68&w=991&h=700&format=webp&mode=fit&q=60",
+			"price": 1149,
+			"weight": 1970
 		},
 		{
 			"id": 6,
-			"title": "Grilled quail",
-			"image": "https://api.shashlikyan.ua/uploads/97/489858-41fa14f5-8870-453b-91e3-7d1c8fca6dce.webp",
-			"price": 150,
-			"weight": 150
+			"title": "SET TEMPTATION",
+			"image": "https://x100-venus-sm-ua.gumlet.io/SKU/SUSHI-MASTER/%D0%A1%D0%B5%D1%82%D0%B8/A9AB1341-E2C1-11ED-B93D-3D904A26EF2D-1969%D1%851100_0004_New_%D0%A1%D0%B5%D1%82-%D0%A1%D0%BF%D0%BE%D0%BA%D1%83%D1%81%D0%B0.png?alt=media&token=a4e2dbc2-7e1f-4d88-ba8f-d3a266d72596&w=991&h=700&format=webp&mode=fit&q=60",
+			"price": 749,
+			"weight": 760
 		},
 		{
 			"id": 7,
-			"title": "Pork rib barbecue",
-			"image": "https://api.shashlikyan.ua/uploads/97/489650-8ec3f761-25dc-4b8f-a13e-ebcdc129797a.webp",
-			"price": 84,
-			"weight": 100
+			"title": "SET IMPERIAL",
+			"image": "https://x100-venus-sm-ua.gumlet.io/SKU/SUSHI-MASTER/%D0%A1%D0%B5%D1%82%D0%B8/70F63BE1-E516-11ED-8B33-0D607C07EC1C-1969%D1%851100_0003_%D0%A1%D0%B5%D1%82-%D0%86%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%81%D1%8C%D0%BA%D0%B8%D0%B9.png?alt=media&token=94dae7e2-1174-413e-aecf-17f195ab46e3&w=991&h=700&format=webp&mode=fit&q=60",
+			"price": 1999,
+			"weight": 3000
 		},
 		{
 			"id": 8,
-			"title": "Pork pulp barbecue",
-			"image": "https://api.shashlikyan.ua/uploads/97/489510-27e7bc33-f133-4fc5-b16f-ddbb715e99a9.webp",
-			"price": 90,
-			"weight": 100
+			"title": "SET FUSION",
+			"image": "https://x100-venus-sm-ua.gumlet.io/SKU/SUSHI-MASTER/%D0%A1%D0%B5%D1%82%D0%B8/83086F11-310C-11ED-B49D-176D6E48CD1B-1969%D1%851100_0009_%D0%A1%D0%B5%D1%82-%D0%A4_%D1%8E%D0%B6%D0%BD.png?alt=media&token=d34a40c2-8975-43bf-9bbf-2789aa9e2f77&w=991&h=700&format=webp&mode=fit&q=60",
+			"price": 899,
+			"weight": 950
 		},
 		{
 			"id": 9,
-			"title": "Grilled chicken",
-			"image": "https://api.shashlikyan.ua/uploads/97/489662-05198b75-e9e3-4756-b896-ac4b13c70f8a.webp",
-			"price": 200,
-			"weight": 200
+			"title": "SET BINGO",
+			"image": "https://x100-venus-sm-ua.gumlet.io/SKU/SUSHI-MASTER/%D0%A1%D0%B5%D1%82%D0%B8/7658E950-E2C0-11ED-89FD-2FAABF3F94CA-1969%D1%851100_0014_New_%D0%B1%D0%B8%D0%BD%D0%B3%D0%BE.png?alt=media&token=16329f6b-c6f0-4548-be0a-2990dd509383&w=991&h=700&format=webp&mode=fit&q=60",
+			"price": 699,
+			"weight": 760
 		},
 		{
 			"id": 10,
-			"title": "Kebab of chicken wings",
-			"image": "https://api.shashlikyan.ua/uploads/97/489562-0a019221-41aa-44cf-9d40-2695184d3ffd.webp",
-			"price": 52,
-			"weight": 100
+			"title": "SET GOLDEN DRAGON",
+			"image": "https://x100-venus-sm-ua.gumlet.io/SKU/SUSHI-MASTER/%D0%A1%D0%B5%D1%82%D0%B8/EE89B6F1-E515-11ED-89FD-2FAABF3F94CA-1969%D1%851100_0004_%D0%A1%D0%B5%D1%82-%D0%97%D0%BE%D0%BB%D0%BE%D1%82%D0%B8%D0%B9-%D0%94%D1%80%D0%B0%D0%BA%D0%BE%D0%BD.png?alt=media&token=cdb9a0ae-f179-4622-a27b-65d901360bb2&w=991&h=700&format=webp&mode=fit&q=60",
+			"price": 1099,
+			"weight": 910
 		}
 	]
 }

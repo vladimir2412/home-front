@@ -12,12 +12,14 @@ import OrdersTable from './components/adminTable/ordersTable/OrdersTable';
 import UsersTable from './components/adminTable/usersTable/UsersTable';
 import Shops from './pages/Shops';
 import GrilledMeatListPage from './pages/GrilledMeatListPage';
+import SushiListPage from './pages/SushiListPage';
 
 const AppLoader = () => {
 	return (
 		<Routes>
 			<Route path={'/'} element={<Shops />} />
 			<Route path={'/grilled-meat'} element={<GrilledMeatListPage />} />
+			<Route path={'/sushi'} element={<SushiListPage />} />
 			<Route
 				path={'/products'}
 				element={
