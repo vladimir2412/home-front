@@ -14,17 +14,26 @@ const GrilledMeatListPage = () => {
 					<Loader />
 				</div>
 			) : (
-				<div className={styles.container}>
-					{data?.map((products) => (
-						<div key={products.id}>
-							<GrilledMeatCard
-								title={products.title}
-								image={products.image}
-								price={products.price}
-							/>
-						</div>
-					))}
-				</div>
+				<>
+					<div className={styles.title}>
+						<p className={styles.title__paragraph}>
+							<span>BBQ</span> House
+						</p>
+						<div className={styles.title__roof} />
+						<div className={styles.title__roof_2} />
+					</div>
+					<div className={styles.container}>
+						{data?.map((products) => (
+							<div key={products.id}>
+								<GrilledMeatCard
+									title={products.title}
+									image={products.image}
+									price={products.price}
+								/>
+							</div>
+						))}
+					</div>
+				</>
 			)}
 		</>
 	);

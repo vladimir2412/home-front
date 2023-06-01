@@ -13,6 +13,7 @@ import UsersTable from './components/adminTable/usersTable/UsersTable';
 import Shops from './pages/Shops';
 import GrilledMeatListPage from './pages/GrilledMeatListPage';
 import SushiListPage from './pages/SushiListPage';
+import DessertsListPage from './pages/DessertsListPage';
 
 const AppLoader = () => {
 	return (
@@ -20,6 +21,7 @@ const AppLoader = () => {
 			<Route path={'/'} element={<Shops />} />
 			<Route path={'/grilled-meat'} element={<GrilledMeatListPage />} />
 			<Route path={'/sushi'} element={<SushiListPage />} />
+			<Route path={'/desserts'} element={<DessertsListPage />} />
 			<Route
 				path={'/products'}
 				element={
