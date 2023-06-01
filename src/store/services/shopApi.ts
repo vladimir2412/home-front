@@ -6,8 +6,8 @@ export const shopApi = createApi({
 	baseQuery: fetchBaseQuery({ baseUrl: 'https://ecommerce-backend-vladimir2412.vercel.app/' }),
 	tagTypes: ['Product', 'User', 'Cart', 'Order'],
 	endpoints: (builder) => ({
-		getProducts: builder.query<IProducts, string>({
-			query: () => `products/`,
+		getProducts: builder.query<IProducts, number>({
+			query: (id: number) => `products/${id}`,
 			providesTags: (result) => ['Product'],
 		}),
 		getProductById: builder.query<IProduct, number>({

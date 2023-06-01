@@ -4,7 +4,7 @@ import GrilledMeatCard from '../components/grilledMeatCard/GrilledMeatCard';
 import { useGetProductsQuery } from '../store/services/shopApi';
 import Loader from '../components/loader/PageLoader';
 const GrilledMeatListPage = () => {
-	const { data, isLoading } = useGetProductsQuery();
+	const { data, isLoading } = useGetProductsQuery(0);
 
 	return (
 		<>
