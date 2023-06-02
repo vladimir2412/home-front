@@ -4,7 +4,7 @@ import styles from '../styles/modules/SushiPage.module.scss';
 import Loader from '../components/loader/PageLoader';
 import { useGetProductsQuery } from '../store/services/shopApi';
 const SushiListPage = () => {
-	const { data: products, isLoading } = useGetProductsQuery(1);
+	const { data, isLoading } = useGetProductsQuery(1);
 
 	return (
 		<>
@@ -103,13 +103,14 @@ const SushiListPage = () => {
 					</div>
 
 					<div className={styles.container}>
-						{products?.map((product) => (
-							<div key={product.id}>
+						{data?.map((products) => (
+							<div key={products.id}>
 								<SushiCard
-									image={product.image}
-									weight={product.weight}
-									title={product.title}
-									price={product.price}
+									data={data.filter((product) => product.id === products.id)}
+									image={products.image}
+									weight={products.weight}
+									title={products.title}
+									price={products.price}
 								/>
 							</div>
 						))}

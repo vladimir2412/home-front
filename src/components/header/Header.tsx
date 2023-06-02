@@ -1,10 +1,9 @@
-import { useGetCartByIdQuery } from '../../store/services/shopApi';
+import { useCart } from '../../hooks/useCart';
 import styles from './header.module.scss';
 import { Link } from 'react-router-dom';
 const Header = () => {
-	const id = Number(localStorage.getItem('id'));
-	const { data } = useGetCartByIdQuery(id);
-	const cartCounter = data?.items.map((item) => item.quantity);
+	const { cart } = useCart();
+	const cartCounter = cart?.items.map((item) => item.quantity);
 	const sum = cartCounter?.reduce((acc, curr) => acc + curr, 0);
 	return (
 		<nav className={styles.wrapper}>

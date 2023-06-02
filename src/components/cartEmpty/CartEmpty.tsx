@@ -12,7 +12,7 @@ const CartEmpty = () => {
 					To order the product, go to the product page.
 				</p>
 				<img src={cartEmptyImg} alt="Empty cart" />
-				<Link to="/products" className={styles.container__button}>
+				<Link to="/" className={styles.container__button}>
 					<button>Go back</button>
 				</Link>
 			</div>

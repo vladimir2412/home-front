@@ -10,7 +10,7 @@ import dessert4 from '../assets/pie.png';
 import dessert5 from '../assets/piece-of-cake.png';
 import dessert6 from '../assets/sweets.png';
 const DessertsListPage = () => {
-	const { data: desserts, isLoading } = useGetProductsQuery(2);
+	const { data, isLoading } = useGetProductsQuery(2);
 	return (
 		<div>
 			<Header />
@@ -34,9 +34,14 @@ const DessertsListPage = () => {
 						</div>
 					</div>
 					<div className={styles.container}>
-						{desserts?.map((products) => (
+						{data?.map((products) => (
 							<div key={products.id}>
-								<DessertCard title={products.title} image={products.image} price={products.price} />
+								<DessertCard
+									data={data.filter((product) => product.id === products.id)}
+									title={products.title}
+									image={products.image}
+									price={products.price}
+								/>
 							</div>
 						))}
 					</div>

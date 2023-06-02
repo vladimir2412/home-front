@@ -26,6 +26,7 @@ const GrilledMeatListPage = () => {
 						{data?.map((products) => (
 							<div key={products.id}>
 								<GrilledMeatCard
+									data={data.filter((product) => product.id === products.id)}
 									title={products.title}
 									image={products.image}
 									price={products.price}

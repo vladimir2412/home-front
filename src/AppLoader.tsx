@@ -1,4 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useActions } from './hooks/useCartActions';
 import ProductPage from './pages/ProductPage';
 import AdminPage from './pages/AdminPage';
 import ProductInfoPage from './pages/ProductInfoPage';
@@ -16,36 +18,23 @@ import SushiListPage from './pages/SushiListPage';
 import DessertsListPage from './pages/DessertsListPage';
 
 const AppLoader = () => {
+	const { setCart } = useActions();
+	useEffect(() => {
+		const savedCart = localStorage.getItem('cart');
+		if (savedCart) {
+			const parsedCart = JSON.parse(savedCart);
+			setCart(parsedCart);
+		}
+	}, []);
 	return (
 		<Routes>
 			<Route path={'/'} element={<Shops />} />
 			<Route path={'/grilled-meat'} element={<GrilledMeatListPage />} />
 			<Route path={'/sushi'} element={<SushiListPage />} />
 			<Route path={'/desserts'} element={<DessertsListPage />} />
-			<Route
-				path={'/products'}
-				element={
-					<PermissionWrapper allowedRole={['user', 'admin']}>
-						<ProductPage />
-					</PermissionWrapper>
-				}
-			/>
-			<Route
-				path={'/products/:id'}
-				element={
-					<PermissionWrapper allowedRole={['user', 'admin']}>
-						<ProductInfoPage />
-					</PermissionWrapper>
-				}
-			/>
-			<Route
-				path={'/cart'}
-				element={
-					<PermissionWrapper allowedRole={['user', 'admin']}>
-						<CartPage />
-					</PermissionWrapper>
-				}
-			/>
+			<Route path={'/products'} element={<ProductPage />} />
+			<Route path={'/products/:id'} element={<ProductInfoPage />} />
+			<Route path={'/cart'} element={<CartPage />} />
 			<Route
 				path={'/admin'}
 				element={
