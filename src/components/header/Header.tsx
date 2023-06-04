@@ -25,7 +25,7 @@ const Header = () => {
 				</Link>
 			</div>
 			<div className={styles.links}>
-				<Link to={'/login'}>
+				{/* <Link to={'/login'}>
 					<svg
 						width="35"
 						height="35"
@@ -42,7 +42,7 @@ const Header = () => {
 							fill="black"
 						/>
 					</svg>
-				</Link>
+				</Link> */}
 				<Link to={'/cart'} className={styles.links__cart}>
 					<svg
 						width="35"

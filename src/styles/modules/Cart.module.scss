@@ -1,3 +1,7 @@
+.map__container {
+	margin: 10px 8px 0 8px;
+	height: 300px;
+}
 .container {
 	max-width: 1300px;
 	margin: 0 auto;
@@ -8,6 +12,7 @@
 	}
 	&__wrapper {
 		display: flex;
+		position: relative;
 	}
 	&__cart {
 		width: 60%;
@@ -21,20 +26,9 @@
 			margin-left: 20px;
 
 			.info__img {
-				width: 250px;
-				height: 250px;
+				width: 235px;
+				height: 160px;
 				margin-right: 25px;
-
-				/* Респонсивные стили для ноутбуков и планшетов */
-				@media screen and (max-width: 1024px) {
-					width: 20%;
-				}
-
-				/* Респонсивные стили для телефонов */
-				@media screen and (max-width: 480px) {
-					width: 50%;
-					margin-right: 10px;
-				}
 			}
 
 			.info__img img {
@@ -49,16 +43,6 @@
 				display: flex;
 				flex-direction: column;
 				position: relative;
-
-				/* Респонсивные стили для ноутбуков и планшетов */
-				@media screen and (max-width: 1024px) {
-					width: 35%;
-				}
-
-				/* Респонсивные стили для телефонов */
-				@media screen and (max-width: 480px) {
-					width: 100%;
-				}
 
 				.container__title {
 					display: flex;
@@ -124,8 +108,45 @@
 			display: flex;
 			margin: 0 auto;
 			max-width: 80%;
+			&__container {
+				position: relative;
+			}
+			.suggestions {
+				position: absolute;
+				background: rgba(232, 232, 232, 0.7);
+				backdrop-filter: blur(5px);
+				border-radius: 3px;
+				z-index: 10;
+				overflow: auto;
+				width: 396px;
+				.list__item {
+					padding: 10px 15px;
+					cursor: pointer;
+					&:hover {
+						background: #d4d4d4;
+					}
+				}
+			}
+			.shop__navigate {
+				background: none rgb(255, 255, 255);
+				margin: 10px;
+				position: absolute;
+				cursor: pointer;
+				border-radius: 2px;
+				height: 25px;
+				width: 25px;
+				padding: 7px;
+				box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+				overflow: hidden;
+				top: 120px;
+				right: 38px;
+				transition: background-color 200ms linear;
+				&:hover {
+					background: none rgb(255, 255, 255, 0.8);
+				}
+			}
 
-			.form__input {
+			&__input {
 				border: none;
 				border: 1px solid rgba(51, 51, 51, 0.6);
 				border-radius: 3px;
@@ -140,7 +161,7 @@
 				opacity: 1;
 				margin-top: 15px;
 			}
-			.form__error {
+			&__error {
 				color: red;
 				font-weight: 500;
 				margin-top: 5px;
@@ -149,6 +170,8 @@
 	}
 
 	.container__sum {
+		position: absolute;
+		bottom: 30px;
 		font-size: 19px;
 		font-weight: 600;
 	}
@@ -171,97 +194,6 @@
 		background-color: #ef4744;
 		opacity: 0.8;
 		cursor: pointer;
-	}
-
-	/* Респонсивные стили для ноутбуков и планшетов */
-	@media screen and (max-width: 1024px) {
-		.container__order {
-			font-size: 18px;
-			margin-left: 20px;
-		}
-		.container__sum {
-			font-size: 18px;
-			margin-left: 20px;
-		}
-
-		.info {
-			margin-left: 25px;
-
-			.info__container {
-				.container__title {
-					.container__name {
-						font-size: 18px;
-					}
-
-					.container__price {
-						font-size: 16px;
-					}
-				}
-
-				.container__paragraph {
-					.container__quantity {
-						font-size: 17px;
-					}
-
-					.container__paragraph span {
-						font-size: 18px;
-					}
-				}
-			}
-		}
-	}
-
-	/* Респонсивные стили для телефонов */
-	@media screen and (max-width: 480px) {
-		.container__order {
-			font-size: 16px;
-		}
-		.container__sum {
-			font-size: 16px;
-		}
-
-		.info {
-			margin-left: 0;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-
-			.info__container {
-				width: 80%;
-				padding: 15px;
-
-				.container__title {
-					justify-content: space-between;
-					margin-bottom: 15px;
-
-					.container__name {
-						font-size: 19px;
-						padding-bottom: 3px;
-					}
-
-					.container__price {
-						font-size: 17px;
-					}
-					.container__XSvg {
-						right: -20px;
-						top: 9px;
-					}
-				}
-
-				.container__paragraph {
-					justify-content: space-between;
-
-					.container__quantity {
-						font-size: 18px;
-					}
-
-					.container__paragraph span {
-						font-size: 20px;
-					}
-				}
-			}
-		}
 	}
 }
 

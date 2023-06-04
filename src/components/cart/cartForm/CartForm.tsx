@@ -1,31 +1,58 @@
+import { useCallback, useEffect, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useNavigate } from 'react-router';
-import { useSubmitOrderMutation } from '../../../store/services/shopApi';
 import styles from '../../../styles/modules/Cart.module.scss';
+import { useJsApiLoader } from '@react-google-maps/api';
+import Autocomplete from '../../mapGoogle/autocomplete/Autocomplete';
+import GoogleMaps from '../../mapGoogle/GoogleMaps';
+
+const defaultCenter = {
+	lat: 50.45755841899277,
+	lng: 30.517539642943504,
+};
+const libraries = ['places'];
 
 const CartForm = () => {
-	const navigate = useNavigate();
+	const [center, setCenter] = useState(defaultCenter);
+	const [address, setAddress] = useState('');
+	const [map, setMap] = useState(null);
+	const [markerPosition, setMarkerPosition] = useState(null);
+	const [directions, setDirections] = useState(null);
+	const onSearchCenter = useCallback((address) => {
+		setAddress(address);
+		setCenter(defaultCenter);
+	}, []);
 
-	const [submitOrder] = useSubmitOrderMutation();
-	const handleSubmit = async (values) => {
-		const user_id = Number(localStorage.getItem('id'));
-
-		try {
-			await submitOrder({ user_id, userInfo: values });
-			alert('Замовлення оформлено');
-			navigate('/');
-			console.log(values);
-		} catch (error) {
-			console.error('Error submitting order:', error);
-		}
+	const onMapClick = (location) => {
+		const clickedCoordinates = {
+			lat: location.latLng.lat(),
+			lng: location.latLng.lng(),
+		};
+		setMarkerPosition(clickedCoordinates);
+		const geocoder = new window.google.maps.Geocoder();
+		geocoder.geocode({ location: clickedCoordinates }, (results, status) => {
+			if (status === 'OK') {
+				if (results[0]) {
+					const clickedAddress = results[0].formatted_address;
+					setAddress(clickedAddress);
+				} else {
+					console.error('No results found');
+				}
+			} else {
+				console.error('Geocoder failed due to: ' + status);
+			}
+		});
 	};
+	const { isLoaded } = useJsApiLoader({
+		id: 'google-map-script',
+		googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+		libraries,
+	});
 
 	const initialValues = {
 		name: '',
 		phoneNumber: '',
 		address: '',
 	};
-
 	const validateForm = (values) => {
 		const errors = {};
 
@@ -37,17 +64,51 @@ const CartForm = () => {
 			errors.phoneNumber = 'Required';
 		}
 
-		if (!values.address) {
-			errors.address = 'Required';
-		}
-
 		return errors;
 	};
+	const handleSubmit = (values) => {
+		console.log('Form Data:', values);
+	};
+	const fetchDirections = (origin, destination) => {
+		const directionsService = new window.google.maps.DirectionsService();
+		directionsService.route(
+			{
+				origin: origin,
+				destination: destination,
+				travelMode: 'DRIVING',
+			},
+			(result, status) => {
+				if (status === 'OK') {
+					setDirections(result);
+				}
+			},
+		);
+	};
+	useEffect(() => {
+		if (map && markerPosition) {
+			const origin = defaultCenter;
+			const destination = markerPosition;
+			fetchDirections(origin, destination);
+		}
+	}, [map, markerPosition]);
 
 	return (
 		<>
+			{isLoaded ? (
+				<GoogleMaps
+					center={defaultCenter}
+					markerPosition={markerPosition}
+					defaultMarker={defaultCenter}
+					onMapClick={onMapClick}
+					setMap={setMap}
+					directions={directions}
+				/>
+			) : (
+				<div>Loading...</div>
+			)}
+
 			<div className={styles.form}>
-				<Formik initialValues={initialValues} onSubmit={handleSubmit} validate={validateForm}>
+				<Formik initialValues={initialValues} validate={validateForm} onSubmit={handleSubmit}>
 					<Form>
 						<Field
 							className={styles.form__input}
@@ -67,16 +128,20 @@ const CartForm = () => {
 						/>
 						<ErrorMessage className={styles.form__error} name="phoneNumber" component="div" />
 
-						<Field
-							className={styles.form__input}
-							type="text"
-							id="address"
-							name="address"
-							placeholder="Address"
+						<Autocomplete
+							isLoaded={isLoaded}
+							onSelect={onSearchCenter}
+							address={address}
+							setAddress={setAddress}
+							map={map}
+							center={center}
+							setMarkerPosition={setMarkerPosition}
+							form={Form}
+							field={address}
 						/>
-						<ErrorMessage className={styles.form__error} name="address" component="div" />
+
 						<div className={styles.container__button}>
-							<button type="submit">Make an order</button>
+							<button type="submit">Make order</button>
 						</div>
 					</Form>
 				</Formik>

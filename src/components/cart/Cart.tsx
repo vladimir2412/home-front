@@ -26,13 +26,13 @@ const Cart = () => {
 										id={tovar.id}
 									/>
 								))}
+								<p className={styles.container__sum}>In total: {cart.totalAmount} UAH</p>
 							</div>
 							<div className={styles.container__form}>
 								<p className={styles.container__order}>Customer</p>
 								<CartForm />
 							</div>
 						</div>
-						<p className={styles.container__sum}>In total: {cart.totalAmount} UAH</p>
 					</div>
 				</>
 			) : (

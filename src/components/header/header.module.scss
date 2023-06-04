@@ -20,14 +20,6 @@
 		> * + * {
 			margin-left: 20px;
 		}
-		> * {
-			transition: 200ms linear;
-		}
-		> * {
-			&:hover {
-				color: #ef4744; // Здесь можно указать желаемый цвет при наведении
-			}
-		}
 		a {
 			text-decoration: none;
 			color: inherit;
