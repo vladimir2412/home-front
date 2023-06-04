@@ -1,7 +1,14 @@
 import { useActions } from '../../../hooks/useCartActions';
 import styles from '../../../styles/modules/Cart.module.scss';
-
-const CartItem = ({ title, image, price, weight, quantity, id }) => {
+interface Props {
+	title: string;
+	image: string;
+	price: number;
+	weight: number;
+	quantity: number;
+	id: number;
+}
+const CartItem = ({ title, image, price, weight, quantity, id }: Props) => {
 	const { increaseQuantity, decreaseQuantity, removeItem } = useActions();
 	return (
 		<>

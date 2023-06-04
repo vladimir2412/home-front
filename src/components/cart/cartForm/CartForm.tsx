@@ -109,41 +109,42 @@ const CartForm = () => {
 
 			<div className={styles.form}>
 				<Formik initialValues={initialValues} validate={validateForm} onSubmit={handleSubmit}>
-					<Form>
-						<Field
-							className={styles.form__input}
-							type="text"
-							id="name"
-							name="name"
-							placeholder="Name"
-						/>
-						<ErrorMessage className={styles.form__error} name="name" component="div" />
+					{(props: FormikProps<Values>) => (
+						<Form>
+							<Field
+								className={styles.form__input}
+								type="text"
+								id="name"
+								name="name"
+								placeholder="Name"
+							/>
+							<ErrorMessage className={styles.form__error} name="name" component="div" />
 
-						<Field
-							className={styles.form__input}
-							type="text"
-							id="phoneNumber"
-							name="phoneNumber"
-							placeholder="Phone number"
-						/>
-						<ErrorMessage className={styles.form__error} name="phoneNumber" component="div" />
+							<Field
+								className={styles.form__input}
+								type="text"
+								id="phoneNumber"
+								name="phoneNumber"
+								placeholder="Phone number"
+							/>
+							<ErrorMessage className={styles.form__error} name="phoneNumber" component="div" />
 
-						<Autocomplete
-							isLoaded={isLoaded}
-							onSelect={onSearchCenter}
-							address={address}
-							setAddress={setAddress}
-							map={map}
-							center={center}
-							setMarkerPosition={setMarkerPosition}
-							form={Form}
-							field={address}
-						/>
+							<Autocomplete
+								name={'address'}
+								isLoaded={isLoaded}
+								onSelect={onSearchCenter}
+								address={address}
+								setAddress={setAddress}
+								map={map}
+								center={center}
+								setMarkerPosition={setMarkerPosition}
+							/>
 
-						<div className={styles.container__button}>
-							<button type="submit">Make order</button>
-						</div>
-					</Form>
+							<div className={styles.container__button}>
+								<button type="submit">Make order</button>
+							</div>
+						</Form>
+					)}
 				</Formik>
 			</div>
 		</>

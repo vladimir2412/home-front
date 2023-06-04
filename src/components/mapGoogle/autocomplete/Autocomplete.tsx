@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
 import useOnclickOutside from 'react-cool-onclickoutside';
 import styles from '../../../styles/modules/Cart.module.scss';
-import { Field } from 'formik';
+import { useField } from 'formik';
 const Autocomplete = ({
+	name,
 	isLoaded,
 	onSelect,
 	address,
@@ -12,6 +13,9 @@ const Autocomplete = ({
 	center,
 	setMarkerPosition,
 }) => {
+	const [field, meta, helpers] = useField(name);
+	const { setValue: setValueInput } = helpers;
+
 	const {
 		ready,
 		value,
@@ -65,10 +69,13 @@ const Autocomplete = ({
 			init();
 		}
 	}, [isLoaded, init]);
+	useEffect(() => {
+		setValueInput(value);
+	}, [value]);
 	return (
 		<>
 			<div ref={ref} className={styles.from__container}>
-				<Field
+				<input
 					type="text"
 					id="address"
 					name="address"
