@@ -17,9 +17,11 @@
 		border-color: #999;
 		img {
 			filter: blur(8px);
+			transition: filter 0.3s;
 		}
 		.card__text {
 			transform: translateY(-400%);
+			transition: transform 0.3s;
 		}
 	}
 }

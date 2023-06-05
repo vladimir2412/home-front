@@ -83,6 +83,9 @@
 				background-color: #fff;
 				color: #ea580c;
 			}
+			&:active {
+				transform: scale(0.95);
+			}
 		}
 	}
 }

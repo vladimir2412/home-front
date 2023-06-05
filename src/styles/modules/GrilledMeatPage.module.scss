@@ -84,6 +84,7 @@
 			opacity: 0;
 			transition: opacity 0.25s ease, transform 0.25s ease-out;
 			transform: translateY(5px);
+			cursor: pointer;
 		}
 	}
 }

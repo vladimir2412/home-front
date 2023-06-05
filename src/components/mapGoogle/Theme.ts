@@ -1,16 +1,51 @@
 export const defaultTheme = [
 	{
-		featureType: 'landscape.man_made',
-		elementType: 'all',
+		featureType: 'water',
 		stylers: [
 			{
-				color: '#faf5ed',
+				saturation: 43,
 			},
 			{
-				lightness: '0',
+				lightness: -11,
 			},
 			{
-				gamma: '1',
+				hue: '#0088ff',
+			},
+		],
+	},
+	{
+		featureType: 'road',
+		elementType: 'geometry.fill',
+		stylers: [
+			{
+				hue: '#ff0000',
+			},
+			{
+				saturation: -100,
+			},
+			{
+				lightness: 99,
+			},
+		],
+	},
+	{
+		featureType: 'road',
+		elementType: 'geometry.stroke',
+		stylers: [
+			{
+				color: '#808080',
+			},
+			{
+				lightness: 54,
+			},
+		],
+	},
+	{
+		featureType: 'landscape.man_made',
+		elementType: 'geometry.fill',
+		stylers: [
+			{
+				color: '#ece2d9',
 			},
 		],
 	},
@@ -19,70 +54,77 @@ export const defaultTheme = [
 		elementType: 'geometry.fill',
 		stylers: [
 			{
-				color: '#bae5a6',
+				color: '#ccdca1',
 			},
 		],
 	},
 	{
 		featureType: 'road',
-		elementType: 'all',
+		elementType: 'labels.text.fill',
 		stylers: [
 			{
-				weight: '1.00',
-			},
-			{
-				gamma: '1.8',
-			},
-			{
-				saturation: '0',
+				color: '#767676',
 			},
 		],
 	},
 	{
 		featureType: 'road',
+		elementType: 'labels.text.stroke',
+		stylers: [
+			{
+				color: '#ffffff',
+			},
+		],
+	},
+	{
+		featureType: 'poi',
+		stylers: [
+			{
+				visibility: 'off',
+			},
+		],
+	},
+	{
+		featureType: 'landscape.natural',
 		elementType: 'geometry.fill',
 		stylers: [
 			{
-				hue: '#ffb200',
+				visibility: 'on',
+			},
+			{
+				color: '#b8cb93',
 			},
 		],
 	},
 	{
-		featureType: 'road.arterial',
-		elementType: 'geometry.fill',
+		featureType: 'poi.park',
 		stylers: [
 			{
-				lightness: '0',
-			},
-			{
-				gamma: '1',
+				visibility: 'on',
 			},
 		],
 	},
 	{
-		featureType: 'transit.station.airport',
-		elementType: 'all',
+		featureType: 'poi.sports_complex',
 		stylers: [
 			{
-				hue: '#b000ff',
-			},
-			{
-				saturation: '23',
-			},
-			{
-				lightness: '-4',
-			},
-			{
-				gamma: '0.80',
+				visibility: 'on',
 			},
 		],
 	},
 	{
-		featureType: 'water',
-		elementType: 'all',
+		featureType: 'poi.medical',
 		stylers: [
 			{
-				color: '#a0daf2',
+				visibility: 'on',
+			},
+		],
+	},
+	{
+		featureType: 'poi.business',
+		stylers: [
+			{
+				visibility: 'simplified',
 			},
 		],
 	},
