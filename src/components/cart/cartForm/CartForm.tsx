@@ -26,8 +26,8 @@ const CartForm = ({ shopId }) => {
 			break;
 		case 2:
 			defaultCenter = {
-				lat: 48.46263244428676,
-				lng: 35.04556618193872,
+				lat: 48.461018547196616,
+				lng: 35.05123319092612,
 			};
 			break;
 		default:
