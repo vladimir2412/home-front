@@ -1,6 +1,6 @@
-import SushiCardShop from '../components/sushiCardShop/SushiCardShop';
-import MeatCardShop from '../components/meatCardShop/MeatCardShop';
-import DessertCardShop from '../components/dessertCardShop/DessertCardShop';
+import SushiShopCard from '../components/sushiShopCard/SushiShopCard';
+import MeatShopCard from '../components/meatShopCard/MeatShopCard';
+import DessertShopCard from '../components/dessertShopCard/DessertShopCard';
 import styles from '../styles/modules/ShopPage.module.scss';
 import Header from '../components/header/Header';
 const Shops = () => {
@@ -13,9 +13,9 @@ const Shops = () => {
 				</div>
 
 				<div className={styles.container__shops}>
-					<MeatCardShop />
-					<SushiCardShop />
-					<DessertCardShop />
+					<MeatShopCard />
+					<SushiShopCard />
+					<DessertShopCard />
 				</div>
 			</div>
 		</>

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from '../../styles/modules/CardShops.module.scss';
-const SushiCardShop = () => {
+const SushiShopCard = () => {
 	return (
 		<Link to={'/sushi'} className={styles.card__shop}>
 			<img
@@ -13,4 +13,4 @@ const SushiCardShop = () => {
 	);
 };
 
-export default SushiCardShop;
+export default SushiShopCard;
