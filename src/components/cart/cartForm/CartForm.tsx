@@ -20,9 +20,15 @@ const CartForm = () => {
 	const [directions, setDirections] = useState(null);
 	const [cartData, setCartData] = useState(null);
 	const [captchaValue, setCaptchaValue] = useState(null);
+	const [showRecaptcha, setShowRecaptcha] = useState(false);
 
 	const onChange = (value) => {
-		setCaptchaValue(value);
+		if (value) {
+			setCaptchaValue(value);
+			setTimeout(() => {
+				setShowRecaptcha(false);
+			}, 1000);
+		}
 	};
 	const onSearchCenter = useCallback((address) => {
 		setAddress(address);
@@ -51,17 +57,18 @@ const CartForm = () => {
 	};
 	const { isLoaded } = useJsApiLoader({
 		id: 'google-map-script',
-		googleMapsApiKey:
-			process.env.VITE_GOOGLE_MAPS_API_KEY || import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+		googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
 		libraries,
 	});
+	{
+		/*process.env.VITE_GOOGLE_MAPS_API_KEY ||*/
+	}
 
 	const initialValues = {
 		name: '',
 		phoneNumber: '',
 		address: '',
 		cartData: cartData,
-		captchaValue: null,
 	};
 	const validateForm = (values) => {
 		const errors = {};
@@ -72,6 +79,9 @@ const CartForm = () => {
 
 		if (!values.phoneNumber) {
 			errors.phoneNumber = 'Required';
+		}
+		if (!values.address) {
+			errors.address = 'Required';
 		}
 
 		return errors;
@@ -84,13 +94,7 @@ const CartForm = () => {
 	useEffect(() => {
 		localStorage.setItem('cartData', cartData);
 	}, [cartData]);
-	const handleSubmit = (values) => {
-		if (captchaValue) {
-			console.log('Form Data:', values);
-		} else {
-			console.log('Please verify the captcha.');
-		}
-	};
+
 	const fetchDirections = (origin, destination) => {
 		const directionsService = new window.google.maps.DirectionsService();
 		directionsService.route(
@@ -106,6 +110,7 @@ const CartForm = () => {
 			},
 		);
 	};
+
 	useEffect(() => {
 		if (map && markerPosition) {
 			const origin = defaultCenter;
@@ -114,6 +119,14 @@ const CartForm = () => {
 		}
 	}, [map, markerPosition]);
 
+	const handleSubmit = (values) => {
+		if (captchaValue) {
+			console.log('Form Data:', values);
+		} else {
+			console.log('Please verify the captcha.');
+			setShowRecaptcha(true);
+		}
+	};
 	return (
 		<>
 			{isLoaded ? (
@@ -159,12 +172,20 @@ const CartForm = () => {
 								center={center}
 								setMarkerPosition={setMarkerPosition}
 							/>
-							<ReCAPTCHA
-								sitekey={import.meta.env.VITE_GOOGLE_RECAPCHA_API_KEY}
-								onChange={onChange}
-							/>
+							{showRecaptcha && (
+								<div className={styles.form__modal}>
+									<div className={styles.form__captcha}>
+										<ReCAPTCHA
+											sitekey={import.meta.env.VITE_GOOGLE_RECAPCHA_API_KEY}
+											onChange={onChange}
+										/>
+									</div>
+								</div>
+							)}
 							<div className={styles.container__button}>
-								<button type="submit">Make order</button>
+								<button type="submit" onClick={() => setShowRecaptcha(true)}>
+									Make order
+								</button>
 							</div>
 						</Form>
 					)}
@@ -175,3 +196,6 @@ const CartForm = () => {
 };
 
 export default CartForm;
+{
+	/*process.env.VITE_GOOGLE_RECAPCHA_API_KEY ||*/
+}
