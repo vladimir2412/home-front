@@ -1,8 +1,8 @@
 import CartItem from './cartItem/CartItem';
 import styles from '../../styles/modules/Cart.module.scss';
-import CartEmpty from './cartEmpty/CartEmpty';
 import CartForm from './cartForm/CartForm';
 import { useCart } from '../../hooks/useCart';
+import CartEmpty from './cartEmpty/CartEmpty';
 const Cart = () => {
 	const { cart } = useCart();
 
