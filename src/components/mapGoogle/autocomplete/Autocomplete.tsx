@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
 import useOnclickOutside from 'react-cool-onclickoutside';
 import styles from '../../../styles/modules/Cart.module.scss';
 import { useField } from 'formik';
+
 const Autocomplete = ({
 	name,
 	isLoaded,
@@ -15,6 +16,7 @@ const Autocomplete = ({
 }) => {
 	const [field, meta, helpers] = useField(name);
 	const { setValue: setValueInput } = helpers;
+	const [coordinates, setCoordinates] = useState('');
 
 	const {
 		ready,
@@ -35,6 +37,7 @@ const Autocomplete = ({
 		setValue(e.target.value);
 		setAddress(e.target.value);
 	};
+
 	const handleSelect =
 		({ description }) =>
 		() => {
@@ -45,6 +48,8 @@ const Autocomplete = ({
 			getGeocode({ address: description }).then((results) => {
 				const { lat, lng } = getLatLng(results[0]);
 				console.log('📍 Coordinates: ', { lat, lng });
+				setValueInput(description);
+				setCoordinates(description);
 				onSelect({ lat, lng });
 				setMarkerPosition({ lat, lng });
 			});
@@ -69,9 +74,15 @@ const Autocomplete = ({
 			init();
 		}
 	}, [isLoaded, init]);
+
 	useEffect(() => {
-		setValueInput(value);
-	}, [value]);
+		if (value && value !== coordinates && value !== address) {
+			setValueInput(value);
+		} else if (!value && address !== coordinates) {
+			setValueInput(address);
+		}
+	}, [value, address, coordinates]);
+
 	return (
 		<>
 			<div ref={ref} className={styles.from__container}>
@@ -83,7 +94,7 @@ const Autocomplete = ({
 					value={value || address}
 					onChange={handleInput}
 					disabled={!ready}
-					placeholder="Choose adress"
+					placeholder="Choose address"
 				/>
 				<svg
 					width="24"

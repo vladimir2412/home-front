@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import styles from '../../../styles/modules/Cart.module.scss';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { useJsApiLoader } from '@react-google-maps/api';
 import Autocomplete from '../../mapGoogle/autocomplete/Autocomplete';
 import GoogleMaps from '../../mapGoogle/GoogleMaps';
+import styles from '../../../styles/modules/Cart.module.scss';
 
 const defaultCenter = {
 	lat: 50.45755841899277,
@@ -17,6 +18,12 @@ const CartForm = () => {
 	const [map, setMap] = useState(null);
 	const [markerPosition, setMarkerPosition] = useState(null);
 	const [directions, setDirections] = useState(null);
+	const [cartData, setCartData] = useState(null);
+	const [captchaValue, setCaptchaValue] = useState(null);
+
+	const onChange = (value) => {
+		setCaptchaValue(value);
+	};
 	const onSearchCenter = useCallback((address) => {
 		setAddress(address);
 		setCenter(defaultCenter);
@@ -52,6 +59,8 @@ const CartForm = () => {
 		name: '',
 		phoneNumber: '',
 		address: '',
+		cartData: cartData,
+		captchaValue: null,
 	};
 	const validateForm = (values) => {
 		const errors = {};
@@ -66,8 +75,20 @@ const CartForm = () => {
 
 		return errors;
 	};
+	useEffect(() => {
+		const cartDataFromLocalStorage = localStorage.getItem('cartData');
+		setCartData(cartDataFromLocalStorage);
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem('cartData', cartData);
+	}, [cartData]);
 	const handleSubmit = (values) => {
-		console.log('Form Data:', values);
+		if (captchaValue) {
+			console.log('Form Data:', values);
+		} else {
+			console.log('Please verify the captcha.');
+		}
 	};
 	const fetchDirections = (origin, destination) => {
 		const directionsService = new window.google.maps.DirectionsService();
@@ -119,7 +140,6 @@ const CartForm = () => {
 								placeholder="Name"
 							/>
 							<ErrorMessage className={styles.form__error} name="name" component="div" />
-
 							<Field
 								className={styles.form__input}
 								type="text"
@@ -128,7 +148,6 @@ const CartForm = () => {
 								placeholder="Phone number"
 							/>
 							<ErrorMessage className={styles.form__error} name="phoneNumber" component="div" />
-
 							<Autocomplete
 								name={'address'}
 								isLoaded={isLoaded}
@@ -139,7 +158,7 @@ const CartForm = () => {
 								center={center}
 								setMarkerPosition={setMarkerPosition}
 							/>
-
+							<ReCAPTCHA sitekey="6LetcWwmAAAAAMM9zoRlEK55R89YmK-VnuC6Mmcl" onChange={onChange} />
 							<div className={styles.container__button}>
 								<button type="submit">Make order</button>
 							</div>
