@@ -6,13 +6,37 @@ import Autocomplete from '../../mapGoogle/autocomplete/Autocomplete';
 import GoogleMaps from '../../mapGoogle/GoogleMaps';
 import styles from '../../../styles/modules/Cart.module.scss';
 
-const defaultCenter = {
-	lat: 50.45755841899277,
-	lng: 30.517539642943504,
-};
 const libraries = ['places'];
 
-const CartForm = () => {
+const CartForm = ({ shopId }) => {
+	let defaultCenter = {};
+
+	switch (shopId) {
+		case 0:
+			defaultCenter = {
+				lat: 50.45755841899277,
+				lng: 30.517539642943504,
+			};
+			break;
+		case 1:
+			defaultCenter = {
+				lat: 46.472583417020104,
+				lng: 30.744547832728976,
+			};
+			break;
+		case 2:
+			defaultCenter = {
+				lat: 48.46263244428676,
+				lng: 35.04556618193872,
+			};
+			break;
+		default:
+			defaultCenter = {
+				lat: 50.45755841899277,
+				lng: 30.517539642943504,
+			};
+			break;
+	}
 	const [center, setCenter] = useState(defaultCenter);
 	const [address, setAddress] = useState('');
 	const [map, setMap] = useState(null);

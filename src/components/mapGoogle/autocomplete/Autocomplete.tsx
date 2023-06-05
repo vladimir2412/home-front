@@ -42,12 +42,10 @@ const Autocomplete = ({
 		({ description }) =>
 		() => {
 			setValue(description, false);
-			console.log(description);
 			clearSuggestions();
 
 			getGeocode({ address: description }).then((results) => {
 				const { lat, lng } = getLatLng(results[0]);
-				console.log('📍 Coordinates: ', { lat, lng });
 				setValueInput(description);
 				setCoordinates(description);
 				onSelect({ lat, lng });

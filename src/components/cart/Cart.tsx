@@ -5,7 +5,7 @@ import { useCart } from '../../hooks/useCart';
 import CartEmpty from './cartEmpty/CartEmpty';
 const Cart = () => {
 	const { cart } = useCart();
-
+	const shopId = cart.items.find((item) => item.hasOwnProperty('shop'))?.shop;
 	return (
 		<>
 			{cart && cart.items.length > 0 ? (
@@ -30,7 +30,7 @@ const Cart = () => {
 							</div>
 							<div className={styles.container__form}>
 								<p className={styles.container__order}>Customer</p>
-								<CartForm />
+								<CartForm shopId={shopId} />
 							</div>
 						</div>
 					</div>

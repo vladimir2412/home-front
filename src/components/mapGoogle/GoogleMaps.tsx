@@ -77,7 +77,7 @@ const GoogleMaps = ({ center, markerPosition, defaultMarker, onMapClick, setMap,
 			<GoogleMap
 				mapContainerClassName={styles.map__container}
 				center={center}
-				zoom={10}
+				zoom={12}
 				onLoad={onLoad}
 				onClick={onMapClick}
 				onUnmount={onUnmount}
