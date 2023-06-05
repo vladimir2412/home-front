@@ -49,9 +49,11 @@ const CartForm = () => {
 			}
 		});
 	};
+	console.log(import.meta.env.VITE_GOOGLE_MAPS_API_KEY);
 	const { isLoaded } = useJsApiLoader({
 		id: 'google-map-script',
-		googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+		googleMapsApiKey:
+			process.env.VITE_GOOGLE_MAPS_API_KEY || import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
 		libraries,
 	});
 
@@ -158,7 +160,10 @@ const CartForm = () => {
 								center={center}
 								setMarkerPosition={setMarkerPosition}
 							/>
-							<ReCAPTCHA sitekey="6LetcWwmAAAAAMM9zoRlEK55R89YmK-VnuC6Mmcl" onChange={onChange} />
+							<ReCAPTCHA
+								sitekey={import.meta.env.VITE_GOOGLE_RECAPCHA_API_KEY}
+								onChange={onChange}
+							/>
 							<div className={styles.container__button}>
 								<button type="submit">Make order</button>
 							</div>
