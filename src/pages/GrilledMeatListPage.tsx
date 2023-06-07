@@ -30,6 +30,7 @@ const GrilledMeatListPage = () => {
 									title={products.title}
 									image={products.image}
 									price={products.price}
+									weight={products.weight}
 								/>
 							</div>
 						))}

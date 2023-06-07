@@ -9,7 +9,14 @@ const CartEmpty = () => {
 				<p>
 					Most likely, you haven't ordered anything yet.
 					<br />
-					To order the product, go to the product page.
+					To order go to the products page <br />
+					or <br />
+					If you made an order, check it in{' '}
+					<Link to={'/order-history'}>
+						<span>
+							order history <span aria-hidden="true">&rarr;</span>
+						</span>
+					</Link>
 				</p>
 				<img src={cartEmptyImg} alt="Empty cart" />
 				<Link to="/" className={styles.container__button}>

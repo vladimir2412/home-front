@@ -1,6 +1,6 @@
 import { useActions } from '../../hooks/useCartActions';
 import styles from '../../styles/modules/GrilledMeatPage.module.scss';
-const GrilledMeatCard = ({ title, image, price, data }) => {
+const GrilledMeatCard = ({ title, image, price, data, weight }) => {
 	const { addItemToCart } = useActions();
 	return (
 		<div className={styles.product__card}>
@@ -20,7 +20,9 @@ const GrilledMeatCard = ({ title, image, price, data }) => {
 				/>
 			</svg>
 			<p className={styles.product__card__title}>{title}</p>
-			<p className={styles.product__card__price}>Price: {price} UAH</p>
+			<p className={styles.product__card__price}>
+				Price: {price} UAH <span>{weight} g.</span>
+			</p>
 		</div>
 	);
 };

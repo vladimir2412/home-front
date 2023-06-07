@@ -69,7 +69,9 @@
 		&__price {
 			font-size: 16px;
 			color: #888;
-			margin-top: 5px;
+			margin: 10px 0 10px 0;
+			display: flex;
+			justify-content: space-between;
 		}
 
 		&__weight {

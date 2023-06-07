@@ -1,4 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useRef } from 'react';
+import { useActions } from '../../../hooks/useCartActions';
+import { useCart } from '../../../hooks/useCart';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useJsApiLoader } from '@react-google-maps/api';
@@ -8,7 +10,8 @@ import styles from '../../../styles/modules/Cart.module.scss';
 
 const libraries = ['places'];
 
-const CartForm = ({ shopId }) => {
+const CartForm = ({ shopId, submitOrder }) => {
+	const formRef = useRef(null);
 	let defaultCenter = {};
 
 	switch (shopId) {
@@ -37,6 +40,8 @@ const CartForm = ({ shopId }) => {
 			};
 			break;
 	}
+	const { cart } = useCart();
+	const { clearCart } = useActions();
 	const [center, setCenter] = useState(defaultCenter);
 	const [address, setAddress] = useState('');
 	const [map, setMap] = useState(null);
@@ -44,6 +49,7 @@ const CartForm = ({ shopId }) => {
 	const [directions, setDirections] = useState(null);
 	const [cartData, setCartData] = useState(null);
 	const [captchaValue, setCaptchaValue] = useState(null);
+	const [captchaVerified, setCaptchaVerified] = useState(false);
 	const [showRecaptcha, setShowRecaptcha] = useState(false);
 
 	const onSearchCenter = useCallback((address) => {
@@ -113,17 +119,35 @@ const CartForm = ({ shopId }) => {
 	const onChange = (value) => {
 		if (value) {
 			setCaptchaValue(value);
+			setCaptchaVerified(true);
+			setTimeout(() => {
+				if (formRef.current) {
+					formRef.current.handleSubmit();
+				}
+			}, 10);
 			setTimeout(() => {
 				setShowRecaptcha(false);
 			}, 1000);
 		}
 	};
-	const handleSubmit = (values) => {
-		if (captchaValue) {
-			console.log('Form Data:', values);
-		} else {
-			console.log('Please verify the captcha.');
-			setShowRecaptcha(true);
+	const handleSubmit = async (values, { setSubmitting }) => {
+		try {
+			if (captchaVerified) {
+				const cartItems = JSON.stringify(cart.items);
+				const formData = {
+					...values,
+					items: cartItems,
+				};
+
+				await submitOrder(formData);
+				alert(`Thank you for your order!Expect a call from the delivery service`);
+
+				clearCart();
+			}
+		} catch (error) {
+			console.error('Error submitting order:', error);
+		} finally {
+			setSubmitting(false);
 		}
 	};
 	const handleModalClick = (event) => {
@@ -131,22 +155,30 @@ const CartForm = ({ shopId }) => {
 			setShowRecaptcha(false);
 		}
 	};
-
 	const initialValues = {
 		name: '',
-		phoneNumber: '',
+		phone: '',
+		email: '',
 		address: '',
-		cartData: cartData,
 	};
+
 	const validateForm = (values) => {
 		const errors = {};
 
 		if (!values.name) {
-			errors.name = 'Required';
+			errors.name = 'Name is required';
+		} else if (values.name.length < 4) {
+			errors.name = 'Name must be at least 4 characters long';
 		}
-
-		if (!values.phoneNumber) {
-			errors.phoneNumber = 'Required';
+		if (!values.phone) {
+			errors.phone = 'Phone number is required';
+		} else if (!/^(\+380)\d{9}$/.test(values.phone)) {
+			errors.phone = 'Invalid phone number format';
+		}
+		if (!values.email) {
+			errors.email = 'Email is required';
+		} else if (!/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(values.email)) {
+			errors.email = 'Invalid email address!';
 		}
 		if (!values.address) {
 			errors.address = 'Required';
@@ -170,7 +202,12 @@ const CartForm = ({ shopId }) => {
 			)}
 
 			<div className={styles.form}>
-				<Formik initialValues={initialValues} validate={validateForm} onSubmit={handleSubmit}>
+				<Formik
+					innerRef={formRef}
+					initialValues={initialValues}
+					validate={validateForm}
+					onSubmit={handleSubmit}
+				>
 					{(props: FormikProps<Values>) => (
 						<Form>
 							<Field
@@ -184,11 +221,19 @@ const CartForm = ({ shopId }) => {
 							<Field
 								className={styles.form__input}
 								type="text"
-								id="phoneNumber"
-								name="phoneNumber"
+								id="phone"
+								name="phone"
 								placeholder="Phone number"
 							/>
-							<ErrorMessage className={styles.form__error} name="phoneNumber" component="div" />
+							<ErrorMessage className={styles.form__error} name="phone" component="div" />
+							<Field
+								className={styles.form__input}
+								type="text"
+								id="email"
+								name="email"
+								placeholder="Email"
+							/>
+							<ErrorMessage className={styles.form__error} name="email" component="div" />
 							<Autocomplete
 								name={'address'}
 								isLoaded={isLoaded}
@@ -199,6 +244,7 @@ const CartForm = ({ shopId }) => {
 								center={center}
 								setMarkerPosition={setMarkerPosition}
 							/>
+
 							{showRecaptcha && (
 								<div className={styles.form__modal} onClick={handleModalClick}>
 									<div className={styles.form__captcha}>

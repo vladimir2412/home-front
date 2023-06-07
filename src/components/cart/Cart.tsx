@@ -3,9 +3,12 @@ import styles from '../../styles/modules/Cart.module.scss';
 import CartForm from './cartForm/CartForm';
 import { useCart } from '../../hooks/useCart';
 import CartEmpty from './cartEmpty/CartEmpty';
+import { useSubmitOrderMutation } from '../../store/services/shopApi';
 const Cart = () => {
 	const { cart } = useCart();
 	const shopId = cart.items.find((item) => item.hasOwnProperty('shop'))?.shop;
+	const [submitOrder] = useSubmitOrderMutation();
+
 	return (
 		<>
 			{cart && cart.items.length > 0 ? (
@@ -21,7 +24,7 @@ const Cart = () => {
 										title={tovar.title}
 										image={tovar.image}
 										price={tovar.price}
-										weight={Number(tovar.weight)}
+										weight={Number(tovar.weight) === 1 ? undefined : Number(tovar.weight)}
 										quantity={tovar.quantity}
 										id={tovar.id}
 									/>
@@ -30,7 +33,7 @@ const Cart = () => {
 							</div>
 							<div className={styles.container__form}>
 								<p className={styles.container__order}>Customer</p>
-								<CartForm shopId={shopId} />
+								<CartForm shopId={shopId} submitOrder={submitOrder} />
 							</div>
 						</div>
 					</div>

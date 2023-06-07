@@ -11,19 +11,18 @@ export const shopApi = createApi({
 			query: (id: number) => `products/${id}`,
 			providesTags: (result) => ['Product'],
 		}),
-		getProductById: builder.query<IProduct, number>({
-			query: (id) => `products/${id}`,
-			providesTags: (result) => ['Product'],
-		}),
 
 		submitOrder: builder.mutation<void, unknown>({
 			query: (body) => ({
-				url: `/cart`,
+				url: `/orders`,
 				method: 'POST',
 				body: body,
 			}),
 			invalidatesTags: ['Cart'],
 		}),
+		getOrders: builder.query({
+			query: (body) => `/orders?phone=${body.phone}&email=${body.email}`,
+		}),
 	}),
 });
-export const { useGetProductsQuery, useGetProductByIdQuery, useSubmitOrderMutation } = shopApi;
+export const { useGetProductsQuery, useSubmitOrderMutation, useGetOrdersQuery } = shopApi;

@@ -8,6 +8,15 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	.text__goback {
+		margin-left: 20px;
+		font-weight: 600;
+		font-size: 17px;
+
+		span {
+			margin: 0 5px;
+		}
+	}
 
 	.navigation {
 		display: flex;

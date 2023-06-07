@@ -38,7 +38,7 @@ const CartItem = ({ title, image, price, weight, quantity, id }: Props) => {
 						</svg>
 					</div>
 					<div className={styles.container__paragraph}>
-						<p>{weight} g.</p>
+						{weight === undefined ? '' : <p>{weight} g.</p>}
 
 						<p className={styles.container__quantity}>Quantity</p>
 						<span>

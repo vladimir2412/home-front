@@ -6,6 +6,7 @@ import Shops from './pages/Shops';
 import GrilledMeatListPage from './pages/GrilledMeatListPage';
 import SushiListPage from './pages/SushiListPage';
 import DessertsListPage from './pages/DessertsListPage';
+import OrderHistory from './pages/OrderHistory';
 
 const AppLoader = () => {
 	const { setCart } = useActions();
@@ -23,6 +24,7 @@ const AppLoader = () => {
 			<Route path={'/sushi'} element={<SushiListPage />} />
 			<Route path={'/desserts'} element={<DessertsListPage />} />
 			<Route path={'/cart'} element={<CartPage />} />
+			<Route path={'/order-history'} element={<OrderHistory />} />
 			<Route path={'*'} element={<h1>Page not Found</h1>} />
 		</Routes>
 	);
